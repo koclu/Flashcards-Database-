@@ -1,0 +1,279 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>MainWindow</class>
+ <widget class="QMainWindow" name="MainWindow">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>789</width>
+    <height>637</height>
+   </rect>
+  </property>
+  <property name="minimumSize">
+   <size>
+    <width>789</width>
+    <height>637</height>
+   </size>
+  </property>
+  <property name="maximumSize">
+   <size>
+    <width>789</width>
+    <height>637</height>
+   </size>
+  </property>
+  <property name="windowTitle">
+   <string>Words game</string>
+  </property>
+  <property name="styleSheet">
+   <string notr="true"/>
+  </property>
+  <widget class="QWidget" name="centralwidget">
+   <widget class="QWidget" name="game_widget" native="true">
+    <property name="geometry">
+     <rect>
+      <x>-10</x>
+      <y>-20</y>
+      <width>861</width>
+      <height>711</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background-color:rgb(255, 253, 251)</string>
+    </property>
+    <widget class="QLabel" name="wordcard_label">
+     <property name="enabled">
+      <bool>true</bool>
+     </property>
+     <property name="geometry">
+      <rect>
+       <x>130</x>
+       <y>180</y>
+       <width>531</width>
+       <height>301</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <family>Berlin Sans FB</family>
+       <pointsize>25</pointsize>
+       <weight>50</weight>
+       <italic>false</italic>
+       <bold>false</bold>
+      </font>
+     </property>
+     <property name="toolTip">
+      <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;asd&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+     </property>
+     <property name="whatsThis">
+      <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;English word&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">border-radius:20px;font: 25pt &quot;Berlin Sans FB&quot;;
+color:rgb(255, 255, 255) ;
+background-color: rgb(85, 85, 255);</string>
+     </property>
+     <property name="text">
+      <string>Dutch
+
+Word</string>
+     </property>
+     <property name="alignment">
+      <set>Qt::AlignCenter</set>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="green_button">
+     <property name="geometry">
+      <rect>
+       <x>480</x>
+       <y>520</y>
+       <width>81</width>
+       <height>51</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">border-radius:20px;
+background-color: rgb(255, 255, 255)</string>
+     </property>
+     <property name="text">
+      <string/>
+     </property>
+     <property name="icon">
+      <iconset>
+       <normaloff>check.png</normaloff>
+       <normalon>check.png</normalon>
+       <disabledon>check.png</disabledon>
+       <activeon>check.png</activeon>check.png</iconset>
+     </property>
+     <property name="iconSize">
+      <size>
+       <width>80</width>
+       <height>80</height>
+      </size>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="red_button">
+     <property name="geometry">
+      <rect>
+       <x>250</x>
+       <y>520</y>
+       <width>81</width>
+       <height>51</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">border-radius:20px;
+background-color: rgb(255, 255, 255)</string>
+     </property>
+     <property name="text">
+      <string/>
+     </property>
+     <property name="icon">
+      <iconset>
+       <normalon>cancel (2).png</normalon>
+      </iconset>
+     </property>
+     <property name="iconSize">
+      <size>
+       <width>80</width>
+       <height>80</height>
+      </size>
+     </property>
+    </widget>
+    <widget class="QLabel" name="level_label">
+     <property name="geometry">
+      <rect>
+       <x>20</x>
+       <y>30</y>
+       <width>121</width>
+       <height>31</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">font: 14pt &quot;Berlin Sans FB&quot;;
+
+background-color: rgb(85, 85, 255);
+color: rgb(255, 255, 255);</string>
+     </property>
+     <property name="text">
+      <string>Level : </string>
+     </property>
+    </widget>
+    <widget class="QLabel" name="total_time_label">
+     <property name="geometry">
+      <rect>
+       <x>310</x>
+       <y>30</y>
+       <width>191</width>
+       <height>31</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">font: 14pt &quot;Berlin Sans FB&quot;;
+
+background-color: rgb(85, 85, 255);
+color: rgb(255, 255, 255);</string>
+     </property>
+     <property name="text">
+      <string>Total Time : </string>
+     </property>
+    </widget>
+    <widget class="QLabel" name="remaining_word_label">
+     <property name="geometry">
+      <rect>
+       <x>20</x>
+       <y>70</y>
+       <width>251</width>
+       <height>31</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">font: 14pt &quot;Berlin Sans FB&quot;;
+
+background-color: rgb(85, 85, 255);
+color: rgb(255, 255, 255);</string>
+     </property>
+     <property name="text">
+      <string>Remaining  word : </string>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="pushButton">
+     <property name="geometry">
+      <rect>
+       <x>730</x>
+       <y>40</y>
+       <width>51</width>
+       <height>51</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">font: 20pt &quot;Berlin Sans FB&quot;;
+color: rgb(255, 255, 255);
+;border-radius:20px;
+background-color: rgb(255, 0, 0);</string>
+     </property>
+     <property name="text">
+      <string/>
+     </property>
+     <property name="icon">
+      <iconset>
+       <normaloff>back.png</normaloff>back.png</iconset>
+     </property>
+     <property name="iconSize">
+      <size>
+       <width>55</width>
+       <height>55</height>
+      </size>
+     </property>
+    </widget>
+    <widget class="QLabel" name="timer">
+     <property name="geometry">
+      <rect>
+       <x>370</x>
+       <y>120</y>
+       <width>51</width>
+       <height>51</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">font: 30pt &quot;Berlin Sans FB&quot;;
+color: rgb(0, 0, 127);
+;border-radius:20px;
+background-color: rgb(255, 255, 255);</string>
+     </property>
+     <property name="text">
+      <string> 3</string>
+     </property>
+    </widget>
+    <widget class="QLabel" name="label">
+     <property name="geometry">
+      <rect>
+       <x>-10</x>
+       <y>20</y>
+       <width>851</width>
+       <height>91</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">
+background-color: rgb(85, 85, 255);</string>
+     </property>
+     <property name="text">
+      <string/>
+     </property>
+    </widget>
+    <zorder>label</zorder>
+    <zorder>wordcard_label</zorder>
+    <zorder>green_button</zorder>
+    <zorder>red_button</zorder>
+    <zorder>level_label</zorder>
+    <zorder>total_time_label</zorder>
+    <zorder>remaining_word_label</zorder>
+    <zorder>pushButton</zorder>
+    <zorder>timer</zorder>
+   </widget>
+  </widget>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>
