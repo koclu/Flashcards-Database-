@@ -32,8 +32,8 @@
    <widget class="QWidget" name="game_widget" native="true">
     <property name="geometry">
      <rect>
-      <x>-10</x>
-      <y>-20</y>
+      <x>0</x>
+      <y>-10</y>
       <width>861</width>
       <height>711</height>
      </rect>
@@ -50,7 +50,7 @@
        <x>130</x>
        <y>180</y>
        <width>531</width>
-       <height>301</height>
+       <height>261</height>
       </rect>
      </property>
      <property name="font">
@@ -85,8 +85,8 @@ Word</string>
     <widget class="QPushButton" name="green_button">
      <property name="geometry">
       <rect>
-       <x>480</x>
-       <y>520</y>
+       <x>470</x>
+       <y>460</y>
        <width>81</width>
        <height>51</height>
       </rect>
@@ -115,8 +115,8 @@ background-color: rgb(255, 255, 255)</string>
     <widget class="QPushButton" name="red_button">
      <property name="geometry">
       <rect>
-       <x>250</x>
-       <y>520</y>
+       <x>260</x>
+       <y>460</y>
        <width>81</width>
        <height>51</height>
       </rect>
@@ -162,10 +162,10 @@ color: rgb(255, 255, 255);</string>
     <widget class="QLabel" name="total_time_label">
      <property name="geometry">
       <rect>
-       <x>310</x>
+       <x>280</x>
        <y>30</y>
-       <width>191</width>
-       <height>31</height>
+       <width>251</width>
+       <height>41</height>
       </rect>
      </property>
      <property name="styleSheet">
@@ -262,6 +262,90 @@ background-color: rgb(85, 85, 255);</string>
       <string/>
      </property>
     </widget>
+    <widget class="QLineEdit" name="lineEditTitles">
+     <property name="geometry">
+      <rect>
+       <x>190</x>
+       <y>530</y>
+       <width>431</width>
+       <height>41</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">border-radius:15px;font: 15pt ;
+font: 25pt &quot;Berlin Sans FB&quot;;
+font: 12pt &quot;MS Shell Dlg 2&quot;;
+background-color: rgb(85, 85, 255);
+color :rgb(255, 255, 255)</string>
+     </property>
+     <property name="text">
+      <string>       Current Level Success Rate :   atOnce /  Attempts</string>
+     </property>
+    </widget>
+    <widget class="QProgressBar" name="progressBar_menu_6">
+     <property name="geometry">
+      <rect>
+       <x>310</x>
+       <y>600</y>
+       <width>291</width>
+       <height>21</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <family>MS Shell Dlg 2</family>
+       <pointsize>12</pointsize>
+       <weight>50</weight>
+       <italic>false</italic>
+       <bold>false</bold>
+      </font>
+     </property>
+     <property name="toolTip">
+      <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;br/&gt;&lt;/p&gt;&lt;p&gt;color :rgb(0, 180, 180)&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">QProgressBar {
+     border: 2px solid grey;
+     border-radius: 5px;
+     background-color:#ffffff;
+ }
+
+ QProgressBar::chunk {
+     background-color: #ffdb85;
+     width: 20px;
+ }
+</string>
+     </property>
+     <property name="value">
+      <number>60</number>
+     </property>
+     <property name="alignment">
+      <set>Qt::AlignCenter</set>
+     </property>
+     <property name="format">
+      <string>%p%</string>
+     </property>
+    </widget>
+    <widget class="QLineEdit" name="lineEditTitles_2">
+     <property name="geometry">
+      <rect>
+       <x>210</x>
+       <y>600</y>
+       <width>101</width>
+       <height>21</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">border-radius:15px;font: 15pt ;
+font: 25pt &quot;Berlin Sans FB&quot;;
+font: 8pt &quot;MS Shell Dlg 2&quot;;
+background-color: rgb(85, 85, 255);
+color :rgb(255, 255, 255)</string>
+     </property>
+     <property name="text">
+      <string>Success Percentage</string>
+     </property>
+    </widget>
     <zorder>label</zorder>
     <zorder>wordcard_label</zorder>
     <zorder>green_button</zorder>
@@ -271,6 +355,9 @@ background-color: rgb(85, 85, 255);</string>
     <zorder>remaining_word_label</zorder>
     <zorder>pushButton</zorder>
     <zorder>timer</zorder>
+    <zorder>lineEditTitles</zorder>
+    <zorder>progressBar_menu_6</zorder>
+    <zorder>lineEditTitles_2</zorder>
    </widget>
   </widget>
  </widget>
