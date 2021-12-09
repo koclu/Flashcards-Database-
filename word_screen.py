@@ -8,6 +8,8 @@ class Wordscreen_window(QtWidgets.QMainWindow):
 
     def __init__(self, user):
         self.user = user
+        self.user.atOnce=0
+        self.user.Attempts=0
         super(Wordscreen_window, self).__init__()
         uic.loadUi('Ui/wordscreen.ui', self)
 
@@ -96,14 +98,23 @@ class Wordscreen_window(QtWidgets.QMainWindow):
                     elif self.red_button.isChecked():
                         self.red_button.setChecked(False)
                         break
-
+    
     def push_green_button(self):
+        self.user.atOnce+=1
+        self.user.Attempts+=1
         self.user.levelid.remove(self.id)
         self.remaining_word_label.setText(
             "Remaining Words : " + str(len(self.user.levelid)))
+        
+        self.lineEditTitles.setText("      Current Level Success Rate : " + str(self.user.atOnce)+"/"+str(self.user.Attempts))
+        
+        
 
     def push_red_button(self):
+        self.user.Attempts+=1
         self.index += 1
+        self.lineEditTitles.setText("      Current Level Success Rate : " + str(self.user.atOnce)+"/"+str(self.user.Attempts))
+        self.user.Attempts+=1
 
     def back(self):
         Users.save_to_json(self.user)

@@ -127,4 +127,8 @@ dmypy.json
 
 # Pyre type checker
 .pyre/
+<<<<<<< HEAD
+=======
+# Ui
+>>>>>>> 41c14a2acd0321e5cb02f092dd8c884a99cadf50
 Extracodes

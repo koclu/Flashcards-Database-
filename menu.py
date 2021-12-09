@@ -2,7 +2,7 @@ from PyQt5 import QtWidgets, uic
 from user import Users
 from word_screen import Wordscreen_window
 import os
-
+from statistics import Statistics_Window
 
 class Menuscreen_window(QtWidgets.QMainWindow):
 
@@ -20,7 +20,7 @@ class Menuscreen_window(QtWidgets.QMainWindow):
         self.playbutton.clicked.connect(self.play)
         self.quitbutton.clicked.connect(self.quit)
         self.resetbutton.clicked.connect(self.push_resetbutton)
-
+        self.playbutton_2.clicked.connect(self.showstatistics)
         self.show()
 
     def push_resetbutton(self):
@@ -34,6 +34,12 @@ class Menuscreen_window(QtWidgets.QMainWindow):
         self.cams = Wordscreen_window(self.user)
         self.cams.show()
         self.close()
+        
+    def showstatistics(self):
+        self.cams = Statistics_Window(self.user)
+        self.cams.show()
+        self.close()
+
 
     def quit(self):
         Users.save_to_json(self.user)
