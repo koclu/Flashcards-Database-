@@ -9,7 +9,7 @@
   },
   "irem": {
     "level": 1,
-    "totaltime": 27334
+    "totaltime": 164509
   },
   "ceren": {
     "level": 1,
@@ -37,7 +37,11 @@
   },
   "asd": {
     "level": 1,
+<<<<<<< HEAD
     "totaltime": 0
+=======
+    "totaltime": 18
+>>>>>>> step2_password
   },
   "ddd": {
     "level": 1,
@@ -106,5 +110,12 @@
   "sdfds": {
     "level": 1,
     "totaltime": 12
+<<<<<<< HEAD
+=======
+  },
+  "omer": {
+    "level": 1,
+    "totaltime": 11
+>>>>>>> step2_password
   }
 }
