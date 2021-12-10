@@ -37,7 +37,7 @@
   },
   "asd": {
     "level": 1,
-    "totaltime": 0
+    "totaltime": 18
   },
   "ddd": {
     "level": 1,
@@ -106,5 +106,9 @@
   "sdfds": {
     "level": 1,
     "totaltime": 12
+  },
+  "omer": {
+    "level": 1,
+    "totaltime": 11
   }
 }
