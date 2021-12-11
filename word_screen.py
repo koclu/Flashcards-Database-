@@ -1,15 +1,13 @@
 from PyQt5 import QtCore, QtWidgets, uic
 from user import Users
 import menu
-import threading
 
 
 class Wordscreen_window(QtWidgets.QMainWindow):
 
     def __init__(self, user):
         self.user = user
-        self.user.atOnce=0
-        self.user.Attempts=0
+        self.count = user.totaltime
         super(Wordscreen_window, self).__init__()
         uic.loadUi('Ui/wordscreen.ui', self)
 
@@ -20,14 +18,11 @@ class Wordscreen_window(QtWidgets.QMainWindow):
         self.red_button.setCheckable(True)
 
         self.show()
+        self.q_timer = QtCore.QTimer()
+        self.q_timer.timeout.connect(self.showTime)
+        self.q_timer.start(1000)
 
-        try:
-            threading.Thread(target=self.playgame).start()
-            threading.Thread(target=self.totaltime).start()
-
-        except RuntimeError:
-            Users.save_to_json(user)
-            self.back()
+        self.playgame()
 
     def sleeptime(self, n):
         loop = QtCore.QEventLoop()
@@ -43,20 +38,24 @@ class Wordscreen_window(QtWidgets.QMainWindow):
         self.sleeptime(1)
         self.timer.setText("---")
 
-    def totaltime(self):
-        m = self.user.totaltime//60
-        s = self.user.totaltime % 60
+    # def totaltime(self):
+    #     m = self.user.totaltime//60
+    #     s = self.user.totaltime % 60
 
-        while s <= 60:
-            self.total_time_label.setText(
-                "Minute : %d Second : %d " % (m, s))
-            self.sleeptime(1)
-            s += 1
-            self.user.totaltime += 1
-            if s == 60:
-                m += 1
-                self.user.totaltime += 60*m
-                s = 0
+    #     while s <= 60:
+    #         self.total_time_label.setText(
+    #             "Minute : %d Second : %d " % (m, s))
+    #         self.sleeptime(1)
+    #         s += 1
+    #         self.user.totaltime += 1
+    #         if s == 60:
+    #             m += 1
+    #             self.user.totaltime += 60*m
+    #             s = 0
+
+    def showTime(self):
+        self.count += 1
+        self.total_time_label.setText("Total Time: " + str(self.count))
 
     def playgame(self):
         self.user.get_level_id()
@@ -98,25 +97,18 @@ class Wordscreen_window(QtWidgets.QMainWindow):
                     elif self.red_button.isChecked():
                         self.red_button.setChecked(False)
                         break
-    
+
     def push_green_button(self):
-        self.user.atOnce+=1
-        self.user.Attempts+=1
         self.user.levelid.remove(self.id)
         self.remaining_word_label.setText(
             "Remaining Words : " + str(len(self.user.levelid)))
-        
-        self.lineEditTitles.setText("      Current Level Success Rate : " + str(self.user.atOnce)+"/"+str(self.user.Attempts))
-        
-        
 
     def push_red_button(self):
-        self.user.Attempts+=1
         self.index += 1
-        self.lineEditTitles.setText("      Current Level Success Rate : " + str(self.user.atOnce)+"/"+str(self.user.Attempts))
-        self.user.Attempts+=1
 
     def back(self):
+        self.q_timer.stop()
+        self.user.totaltime = self.count
         Users.save_to_json(self.user)
         self.cams = menu.Menuscreen_window(self.user)
         self.cams.show()
