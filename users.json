@@ -37,11 +37,7 @@
   },
   "asd": {
     "level": 1,
-<<<<<<< HEAD
-    "totaltime": 0
-=======
     "totaltime": 18
->>>>>>> step2_password
   },
   "ddd": {
     "level": 1,
@@ -54,68 +50,5 @@
   "fgf": {
     "level": 1,
     "totaltime": 0
-  },
-  "vsd": {
-    "level": 1,
-    "totaltime": 0
-  },
-  "gfgf": {
-    "level": 1,
-    "totaltime": 0
-  },
-  "fdf": {
-    "level": 1,
-    "totaltime": 3
-  },
-  "dfd": {
-    "level": 1,
-    "totaltime": 32
-  },
-  "asdasd": {
-    "level": 1,
-    "totaltime": 19
-  },
-  "dsfsdf": {
-    "level": 1,
-    "totaltime": 0
-  },
-  "asdsad": {
-    "level": 1,
-    "totaltime": 21
-  },
-  "asdsd": {
-    "level": 1,
-    "totaltime": 0
-  },
-  "sdfdf": {
-    "level": 1,
-    "totaltime": 23
-  },
-  "qwe": {
-    "level": 1,
-    "totaltime": 22
-  },
-  "sdfdsf": {
-    "level": 1,
-    "totaltime": 1
-  },
-  "wqewe": {
-    "level": 1,
-    "totaltime": 5
-  },
-  "erer": {
-    "level": 1,
-    "totaltime": 0
-  },
-  "sdfds": {
-    "level": 1,
-    "totaltime": 12
-<<<<<<< HEAD
-=======
-  },
-  "omer": {
-    "level": 1,
-    "totaltime": 11
->>>>>>> step2_password
   }
 }

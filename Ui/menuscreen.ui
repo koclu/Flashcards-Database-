@@ -42,7 +42,7 @@
     <property name="geometry">
      <rect>
       <x>-40</x>
-      <y>0</y>
+      <y>10</y>
       <width>881</width>
       <height>721</height>
      </rect>
@@ -114,6 +114,10 @@ QPushButton:hover{
 background-color: rgb(255, 255, 255);
 color :rgb(0, 0, 127)
 }
+QPushButton:pressed{
+background-color: rgb(117,213,192,255);
+color :rgb(0, 0, 127)
+}
 </string>
      </property>
      <property name="text">
@@ -160,7 +164,10 @@ QPushButton:hover{
 background-color: rgb(255, 255, 255);
 color :rgb(0, 0, 127)
 }
-</string>
+QPushButton:pressed{
+background-color: rgb(117,213,192,255);
+color :rgb(0, 0, 127)
+}</string>
      </property>
      <property name="text">
       <string>Quit</string>
@@ -206,8 +213,7 @@ color :rgb(0, 0, 127)</string>
      </property>
      <property name="icon">
       <iconset>
-       <normaloff>reset.png</normaloff>reset.png</iconset>
-     </property>
+       <normaloff>reset.png</normaloff>reset.png</iconset>     </property>
      <property name="iconSize">
       <size>
        <width>30</width>
@@ -234,7 +240,10 @@ QPushButton:hover{
 background-color: rgb(255, 255, 255);
 color :rgb(0, 0, 127)
 }
-</string>
+QPushButton:pressed{
+background-color: rgb(117,213,192,255);
+color :rgb(0, 0, 127)
+}</string>
      </property>
      <property name="text">
       <string>Statistics</string>
@@ -275,13 +284,41 @@ color :rgb(0, 0, 127)
 </string>
      </property>
      <property name="value">
-      <number>40</number>
+      <number>60</number>
      </property>
      <property name="alignment">
       <set>Qt::AlignCenter</set>
      </property>
      <property name="format">
       <string>%p%</string>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="addlevelbutton">
+     <property name="geometry">
+      <rect>
+       <x>630</x>
+       <y>50</y>
+       <width>161</width>
+       <height>41</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">QPushButton{
+border-radius:20px;font: 20pt &quot;Berlin Sans FB&quot;;
+background-color: rgb(0, 0, 127);
+color :rgb(255, 255, 255)
+}
+QPushButton:hover{
+background-color: rgb(255, 255, 255);
+color :rgb(0, 0, 127)
+}
+QPushButton:pressed{
+background-color: rgb(117,213,192,255);
+color :rgb(0, 0, 127)
+}</string>
+     </property>
+     <property name="text">
+      <string>+Add Level</string>
      </property>
     </widget>
    </widget>
