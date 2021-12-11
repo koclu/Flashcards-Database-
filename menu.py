@@ -5,6 +5,7 @@ from addlevel import Addlevel_Window
 import os
 from statistics import Statistics_Window
 
+
 class Menuscreen_window(QtWidgets.QMainWindow):
 
     def __init__(self, user):
@@ -33,15 +34,15 @@ class Menuscreen_window(QtWidgets.QMainWindow):
             "value", self.user.totalprogress())
 
     def play(self):
-        self.cams = Wordscreen_window(self.user)
-        self.cams.show()
         self.close()
-        
+        self.cams = Wordscreen_window(self.user)
+
+        # self.cams.show()
+
     def showstatistics(self):
         self.cams = Statistics_Window(self.user)
-        self.cams.show()
+        # self.cams.show()
         self.close()
-
 
     def quit(self):
         Users.save_to_json(self.user)
