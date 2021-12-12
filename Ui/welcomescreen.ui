@@ -196,6 +196,9 @@ color: rgb(255, 255, 255);</string>
       <string notr="true">font: 14pt &quot;Berlin Sans FB&quot;;
 </string>
      </property>
+     <property name="echoMode">
+      <enum>QLineEdit::Password</enum>
+     </property>
     </widget>
     <widget class="QPushButton" name="checkusername_button">
      <property name="geometry">
