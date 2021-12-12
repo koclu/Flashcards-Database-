@@ -213,8 +213,7 @@ color :rgb(0, 0, 127)</string>
      </property>
      <property name="icon">
       <iconset>
-       <normaloff>reset.png</normaloff>reset.png</iconset>
-     </property>
+       <normaloff>reset.png</normaloff>reset.png</iconset>     </property>
      <property name="iconSize">
       <size>
        <width>30</width>
