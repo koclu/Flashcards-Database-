@@ -41,8 +41,8 @@
    <widget class="QWidget" name="progress_progressBar" native="true">
     <property name="geometry">
      <rect>
-      <x>-40</x>
-      <y>10</y>
+      <x>-30</x>
+      <y>0</y>
       <width>881</width>
       <height>721</height>
      </rect>
@@ -127,9 +127,9 @@ color :rgb(0, 0, 127)
     <widget class="QLabel" name="username_label">
      <property name="geometry">
       <rect>
-       <x>310</x>
+       <x>260</x>
        <y>130</y>
-       <width>201</width>
+       <width>311</width>
        <height>31</height>
       </rect>
      </property>
@@ -176,9 +176,9 @@ color :rgb(0, 0, 127)
     <widget class="QLabel" name="level_label">
      <property name="geometry">
       <rect>
-       <x>300</x>
+       <x>280</x>
        <y>310</y>
-       <width>161</width>
+       <width>201</width>
        <height>51</height>
       </rect>
      </property>

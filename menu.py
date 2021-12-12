@@ -6,6 +6,7 @@ from statistics import Statistics_Window
 from addlevel import Addlevel_Window
 
 
+
 class Menuscreen_window(QtWidgets.QMainWindow):
 
     def __init__(self, user):

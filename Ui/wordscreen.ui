@@ -164,7 +164,7 @@ color: rgb(255, 255, 255);</string>
       <rect>
        <x>280</x>
        <y>30</y>
-       <width>251</width>
+       <width>291</width>
        <height>41</height>
       </rect>
      </property>
@@ -265,9 +265,9 @@ background-color: rgb(85, 85, 255);</string>
     <widget class="QLineEdit" name="lineEditTitles">
      <property name="geometry">
       <rect>
-       <x>190</x>
+       <x>160</x>
        <y>530</y>
-       <width>431</width>
+       <width>461</width>
        <height>41</height>
       </rect>
      </property>
