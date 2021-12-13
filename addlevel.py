@@ -23,6 +23,7 @@ class Addlevel_Window(QtWidgets.QMainWindow):
         super(Addlevel_Window, self).__init__()
         uic.loadUi('Ui/addnewlevel.ui', self)
         self.quitbutton.clicked.connect(self.backk)
+        self.lineEdit_1d.setPlaceholderText("Don't mind me.")
         self.save_button.clicked.connect(self.save_to_sql)
 
         self.show()
