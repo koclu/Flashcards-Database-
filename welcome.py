@@ -73,7 +73,7 @@ class Welcomescreen_window(QtWidgets.QMainWindow):
         for nametuple in names:
             if nametuple[0] == username and nametuple[1] == password:
 
-                self.user = Users(nametuple[0], nametuple[2], nametuple[3])
+                self.user = Users(nametuple[0], nametuple[3], nametuple[2])
                 self.user.password = nametuple[1]
 
                 self.cams = Menuscreen_window(self.user)

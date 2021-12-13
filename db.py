@@ -5,7 +5,7 @@ import psycopg2
 
 # create a cursor
 cur = conn.cursor()
-    
+
 # execute a statement
 cur.execute("
     SELECT * from public."Artist";
@@ -19,7 +19,7 @@ print(info)
 cur.close()
 
 
-#saves changes on database
+# saves changes on database
 conn.commit()
 
 
@@ -38,7 +38,7 @@ except (Exception) as error:
 
 sql_query = """
 
-select * from public."Words" 
+select * from public."Words"
 
 """
 
@@ -65,8 +65,8 @@ def getleveltable():
     query = """select * from public."Words where " """
 
 
-def savename(object):
-    query = f"""insert into public."Users" (user_name,password,total_time,current_level) values ('{object.name}','{object.password}','{object.totaltime}','{object.level}')"""
+def savename(user_object):
+    query = f"""insert into public."Users" (user_name,password,total_time,current_level) values ('{user_object.name}','{user_object.password}',{user_object.totaltime},{user_object.level})"""
     cur.execute(query)
     conn.commit()
 
@@ -76,3 +76,31 @@ def bringallnames():
     info = cur.execute(query)
     info = cur.fetchall()
     return info
+
+
+def updatelevel(user_object):
+    query = f""" update public."Users" Set current_level = {user_object.level} where user_name = '{user_object.name}' """
+    cur.execute(query)
+    conn.commit()
+
+
+def save_user(user_object):
+    query = f"""update public."Users" Set user_name = '{user_object.name}' ,
+                                    total_time = {user_object.totaltime} ,
+                                    current_level = {user_object.level}
+                                    where user_name = '{user_object.name}'"""
+    cur.execute(query)
+    conn.commit()
+
+
+def calculate_totalprogress(user_object):
+    # return (self.level * 100) / (len(self.wordsid)/20)
+    query = f"""select current_level from public."Users" where user_name = '{user_object.name}' """
+    query2 = f"""select count(words_id) from public."Words" """
+    info = (cur.execute(query))
+    info = cur.fetchall()
+    level = info[0][0]
+    info2 = (cur.execute(query2))
+    info2 = cur.fetchall()
+    total_of_words = info2[0][0]
+    return ((level * 100) / (total_of_words/20))

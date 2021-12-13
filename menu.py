@@ -4,7 +4,7 @@ from word_screen import Wordscreen_window
 import os
 from statistics import Statistics_Window
 from addlevel import Addlevel_Window
-
+import db
 
 
 class Menuscreen_window(QtWidgets.QMainWindow):
@@ -14,12 +14,11 @@ class Menuscreen_window(QtWidgets.QMainWindow):
         super(Menuscreen_window, self).__init__()
         uic.loadUi('Ui/menuscreen.ui', self)
 
-        self.username_label.setText(user.name.upper())
+        self.username_label.setText(self.user.name.upper())
         self.level_label.setText(
-            "Level : {}".format(user.level))
-        self.progress_progressBar.setProperty(
-            "value", user.totalprogress())
-
+            "Level : {}".format(self.user.level))
+        self.progressBar_menu_3.setProperty(
+            "value", db.calculate_totalprogress(self.user))
         self.playbutton.clicked.connect(self.play)
         self.quitbutton.clicked.connect(self.quit)
         self.resetbutton.clicked.connect(self.push_resetbutton)
@@ -30,10 +29,11 @@ class Menuscreen_window(QtWidgets.QMainWindow):
 
     def push_resetbutton(self):
         self.user.level = 1
+        db.updatelevel(self.user)
         self.level_label.setText(
             "Level : {}".format(self.user.level))
-        self.progress_progressBar.setProperty(
-            "value", self.user.totalprogress())
+        self.progressBar_menu_3.setProperty(
+            "value", db.calculate_totalprogress(self.user))
 
     def play(self):
         self.close()
@@ -47,7 +47,8 @@ class Menuscreen_window(QtWidgets.QMainWindow):
         self.close()
 
     def quit(self):
-        Users.save_to_json(self.user)
+        # Users.save_to_json(self.user)
+        db.save_user(self.user)
         os._exit(1)
 
     def showaddlevel(self):
