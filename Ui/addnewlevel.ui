@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>913</width>
-    <height>714</height>
+    <width>799</width>
+    <height>719</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -17,7 +17,7 @@
    <widget class="QWidget" name="mainmenu_widget" native="true">
     <property name="geometry">
      <rect>
-      <x>0</x>
+      <x>-20</x>
       <y>-20</y>
       <width>881</width>
       <height>721</height>
@@ -74,6 +74,9 @@ color :rgb(0, 0, 0)</string>
      </property>
      <property name="text">
       <string/>
+     </property>
+     <property name="placeholderText">
+      <string>Dutch</string>
      </property>
     </widget>
     <widget class="QPushButton" name="save_button">
@@ -583,7 +586,7 @@ color :rgb(0, 0, 0)
      <property name="geometry">
       <rect>
        <x>190</x>
-       <y>50</y>
+       <y>100</y>
        <width>181</width>
        <height>31</height>
       </rect>
@@ -628,24 +631,7 @@ color :rgb(0, 0, 0)</string>
       <string/>
      </property>
      <property name="placeholderText">
-      <string/>
-     </property>
-    </widget>
-    <widget class="QLabel" name="label">
-     <property name="geometry">
-      <rect>
-       <x>50</x>
-       <y>110</y>
-       <width>321</width>
-       <height>31</height>
-      </rect>
-     </property>
-     <property name="styleSheet">
-      <string notr="true">background-color: rgb(255, 170, 0);
-font: 12pt &quot;MS Shell Dlg 2&quot;;</string>
-     </property>
-     <property name="text">
-      <string>Dutch                        English</string>
+      <string>English</string>
      </property>
     </widget>
     <widget class="QLineEdit" name="lineEdit_2e">
@@ -677,6 +663,9 @@ color :rgb(0, 0, 0)</string>
      <property name="text">
       <string/>
      </property>
+     <property name="placeholderText">
+      <string>English</string>
+     </property>
     </widget>
     <widget class="QLineEdit" name="lineEdit_2d">
      <property name="geometry">
@@ -705,6 +694,9 @@ color :rgb(0, 0, 0)</string>
      </property>
      <property name="text">
       <string/>
+     </property>
+     <property name="placeholderText">
+      <string>Dutch</string>
      </property>
     </widget>
     <widget class="QLineEdit" name="lineEdit_3e">
@@ -736,6 +728,9 @@ color :rgb(0, 0, 0)</string>
      <property name="text">
       <string/>
      </property>
+     <property name="placeholderText">
+      <string>English</string>
+     </property>
     </widget>
     <widget class="QLineEdit" name="lineEdit_3d">
      <property name="geometry">
@@ -764,6 +759,9 @@ color :rgb(0, 0, 0)</string>
      </property>
      <property name="text">
       <string/>
+     </property>
+     <property name="placeholderText">
+      <string>Dutch</string>
      </property>
     </widget>
     <widget class="QLineEdit" name="lineEdit_4e">
@@ -795,6 +793,9 @@ color :rgb(0, 0, 0)</string>
      <property name="text">
       <string/>
      </property>
+     <property name="placeholderText">
+      <string>English</string>
+     </property>
     </widget>
     <widget class="QLineEdit" name="lineEdit_4d">
      <property name="geometry">
@@ -823,6 +824,9 @@ color :rgb(0, 0, 0)</string>
      </property>
      <property name="text">
       <string/>
+     </property>
+     <property name="placeholderText">
+      <string>Dutch</string>
      </property>
     </widget>
     <widget class="QLineEdit" name="lineEdit_5e">
@@ -854,6 +858,9 @@ color :rgb(0, 0, 0)</string>
      <property name="text">
       <string/>
      </property>
+     <property name="placeholderText">
+      <string>English</string>
+     </property>
     </widget>
     <widget class="QLineEdit" name="lineEdit_5d">
      <property name="geometry">
@@ -882,6 +889,9 @@ color :rgb(0, 0, 0)</string>
      </property>
      <property name="text">
       <string/>
+     </property>
+     <property name="placeholderText">
+      <string>Dutch</string>
      </property>
     </widget>
     <widget class="QLineEdit" name="lineEdit_6e">
@@ -913,6 +923,9 @@ color :rgb(0, 0, 0)</string>
      <property name="text">
       <string/>
      </property>
+     <property name="placeholderText">
+      <string>English</string>
+     </property>
     </widget>
     <widget class="QLineEdit" name="lineEdit_6d">
      <property name="geometry">
@@ -941,6 +954,9 @@ color :rgb(0, 0, 0)</string>
      </property>
      <property name="text">
       <string/>
+     </property>
+     <property name="placeholderText">
+      <string>Dutch</string>
      </property>
     </widget>
     <widget class="QLineEdit" name="lineEdit_7e">
@@ -972,6 +988,9 @@ color :rgb(0, 0, 0)</string>
      <property name="text">
       <string/>
      </property>
+     <property name="placeholderText">
+      <string>English</string>
+     </property>
     </widget>
     <widget class="QLineEdit" name="lineEdit_7d">
      <property name="geometry">
@@ -1000,6 +1019,9 @@ color :rgb(0, 0, 0)</string>
      </property>
      <property name="text">
       <string/>
+     </property>
+     <property name="placeholderText">
+      <string>Dutch</string>
      </property>
     </widget>
     <widget class="QLineEdit" name="lineEdit_8e">
@@ -1031,6 +1053,9 @@ color :rgb(0, 0, 0)</string>
      <property name="text">
       <string/>
      </property>
+     <property name="placeholderText">
+      <string>English</string>
+     </property>
     </widget>
     <widget class="QLineEdit" name="lineEdit_8d">
      <property name="geometry">
@@ -1060,8 +1085,11 @@ color :rgb(0, 0, 0)</string>
      <property name="text">
       <string/>
      </property>
+     <property name="placeholderText">
+      <string>Dutch</string>
+     </property>
     </widget>
-    <widget class="QLineEdit" name="lineEdit_9d_2">
+    <widget class="QLineEdit" name="lineEdit_9e">
      <property name="geometry">
       <rect>
        <x>210</x>
@@ -1089,6 +1117,9 @@ color :rgb(0, 0, 0)</string>
      </property>
      <property name="text">
       <string/>
+     </property>
+     <property name="placeholderText">
+      <string>English</string>
      </property>
     </widget>
     <widget class="QLineEdit" name="lineEdit_9d">
@@ -1118,6 +1149,9 @@ color :rgb(0, 0, 0)</string>
      </property>
      <property name="text">
       <string/>
+     </property>
+     <property name="placeholderText">
+      <string>Dutch</string>
      </property>
     </widget>
     <widget class="QLineEdit" name="lineEdit_10e">
@@ -1149,6 +1183,9 @@ color :rgb(0, 0, 0)</string>
      <property name="text">
       <string/>
      </property>
+     <property name="placeholderText">
+      <string>English</string>
+     </property>
     </widget>
     <widget class="QLineEdit" name="lineEdit_10d">
      <property name="geometry">
@@ -1177,6 +1214,9 @@ color :rgb(0, 0, 0)</string>
      </property>
      <property name="text">
       <string/>
+     </property>
+     <property name="placeholderText">
+      <string>Dutch</string>
      </property>
     </widget>
     <widget class="QLineEdit" name="lineEdit_20e">
@@ -1208,6 +1248,9 @@ color :rgb(0, 0, 0)</string>
      <property name="text">
       <string/>
      </property>
+     <property name="placeholderText">
+      <string>English</string>
+     </property>
     </widget>
     <widget class="QLineEdit" name="lineEdit_15d">
      <property name="geometry">
@@ -1237,6 +1280,9 @@ color :rgb(0, 0, 0)</string>
      <property name="text">
       <string/>
      </property>
+     <property name="placeholderText">
+      <string>Dutch</string>
+     </property>
     </widget>
     <widget class="QLineEdit" name="lineEdit_19d">
      <property name="geometry">
@@ -1265,6 +1311,9 @@ color :rgb(0, 0, 0)</string>
      </property>
      <property name="text">
       <string/>
+     </property>
+     <property name="placeholderText">
+      <string>Dutch</string>
      </property>
     </widget>
     <widget class="QLineEdit" name="lineEdit_13e">
@@ -1296,6 +1345,9 @@ color :rgb(0, 0, 0)</string>
      <property name="text">
       <string/>
      </property>
+     <property name="placeholderText">
+      <string>English</string>
+     </property>
     </widget>
     <widget class="QLineEdit" name="lineEdit_20d">
      <property name="geometry">
@@ -1324,6 +1376,9 @@ color :rgb(0, 0, 0)</string>
      </property>
      <property name="text">
       <string/>
+     </property>
+     <property name="placeholderText">
+      <string>Dutch</string>
      </property>
     </widget>
     <widget class="QLineEdit" name="lineEdit_15e">
@@ -1355,6 +1410,9 @@ color :rgb(0, 0, 0)</string>
      <property name="text">
       <string/>
      </property>
+     <property name="placeholderText">
+      <string>English</string>
+     </property>
     </widget>
     <widget class="QLineEdit" name="lineEdit_14e">
      <property name="geometry">
@@ -1385,6 +1443,9 @@ color :rgb(0, 0, 0)</string>
      <property name="text">
       <string/>
      </property>
+     <property name="placeholderText">
+      <string>English</string>
+     </property>
     </widget>
     <widget class="QLineEdit" name="lineEdit_17d">
      <property name="geometry">
@@ -1413,6 +1474,9 @@ color :rgb(0, 0, 0)</string>
      </property>
      <property name="text">
       <string/>
+     </property>
+     <property name="placeholderText">
+      <string>Dutch</string>
      </property>
     </widget>
     <widget class="QLineEdit" name="lineEdit_18e">
@@ -1444,6 +1508,9 @@ color :rgb(0, 0, 0)</string>
      <property name="text">
       <string/>
      </property>
+     <property name="placeholderText">
+      <string>English</string>
+     </property>
     </widget>
     <widget class="QLineEdit" name="lineEdit_11d">
      <property name="geometry">
@@ -1472,6 +1539,9 @@ color :rgb(0, 0, 0)</string>
      </property>
      <property name="text">
       <string/>
+     </property>
+     <property name="placeholderText">
+      <string>Dutch</string>
      </property>
     </widget>
     <widget class="QLineEdit" name="lineEdit_12d">
@@ -1502,6 +1572,9 @@ color :rgb(0, 0, 0)</string>
      <property name="text">
       <string/>
      </property>
+     <property name="placeholderText">
+      <string>Dutch</string>
+     </property>
     </widget>
     <widget class="QLineEdit" name="lineEdit_16d">
      <property name="geometry">
@@ -1530,6 +1603,9 @@ color :rgb(0, 0, 0)</string>
      </property>
      <property name="text">
       <string/>
+     </property>
+     <property name="placeholderText">
+      <string>Dutch</string>
      </property>
     </widget>
     <widget class="QLineEdit" name="lineEdit_11e">
@@ -1561,6 +1637,9 @@ color :rgb(0, 0, 0)</string>
      <property name="text">
       <string/>
      </property>
+     <property name="placeholderText">
+      <string>English</string>
+     </property>
     </widget>
     <widget class="QLineEdit" name="lineEdit_18d">
      <property name="geometry">
@@ -1589,6 +1668,9 @@ color :rgb(0, 0, 0)</string>
      </property>
      <property name="text">
       <string/>
+     </property>
+     <property name="placeholderText">
+      <string>Dutch</string>
      </property>
     </widget>
     <widget class="QLineEdit" name="lineEdit_16e">
@@ -1620,6 +1702,9 @@ color :rgb(0, 0, 0)</string>
      <property name="text">
       <string/>
      </property>
+     <property name="placeholderText">
+      <string>English</string>
+     </property>
     </widget>
     <widget class="QLineEdit" name="lineEdit_19e">
      <property name="geometry">
@@ -1650,6 +1735,9 @@ color :rgb(0, 0, 0)</string>
      <property name="text">
       <string/>
      </property>
+     <property name="placeholderText">
+      <string>English</string>
+     </property>
     </widget>
     <widget class="QLineEdit" name="lineEdit_14d">
      <property name="geometry">
@@ -1678,6 +1766,9 @@ color :rgb(0, 0, 0)</string>
      </property>
      <property name="text">
       <string/>
+     </property>
+     <property name="placeholderText">
+      <string>Dutch</string>
      </property>
     </widget>
     <widget class="QLineEdit" name="lineEdit_12e">
@@ -1709,22 +1800,8 @@ color :rgb(0, 0, 0)</string>
      <property name="text">
       <string/>
      </property>
-    </widget>
-    <widget class="QLabel" name="label_6">
-     <property name="geometry">
-      <rect>
-       <x>470</x>
-       <y>110</y>
-       <width>321</width>
-       <height>31</height>
-      </rect>
-     </property>
-     <property name="styleSheet">
-      <string notr="true">background-color: rgb(255, 170, 0);
-font: 12pt &quot;MS Shell Dlg 2&quot;;</string>
-     </property>
-     <property name="text">
-      <string>Dutch                        English</string>
+     <property name="placeholderText">
+      <string>English</string>
      </property>
     </widget>
     <widget class="QLineEdit" name="lineEdit_17e">
@@ -1756,6 +1833,9 @@ color :rgb(0, 0, 0)</string>
      <property name="text">
       <string/>
      </property>
+     <property name="placeholderText">
+      <string>English</string>
+     </property>
     </widget>
     <widget class="QLineEdit" name="lineEdit_13d">
      <property name="geometry">
@@ -1785,12 +1865,15 @@ color :rgb(0, 0, 0)</string>
      <property name="text">
       <string/>
      </property>
+     <property name="placeholderText">
+      <string>Dutch</string>
+     </property>
     </widget>
-    <widget class="QLabel" name="label_2">
+    <widget class="QLabel" name="label_26">
      <property name="geometry">
       <rect>
        <x>50</x>
-       <y>50</y>
+       <y>100</y>
        <width>141</width>
        <height>31</height>
       </rect>
@@ -1812,7 +1895,7 @@ color :rgb(0, 0, 0)</string>
       <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; color:#ffffff;&quot;&gt;Level name :&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
      </property>
     </widget>
-    <widget class="QLabel" name="label_3">
+    <widget class="QLabel" name="label_27">
      <property name="geometry">
       <rect>
        <x>30</x>
@@ -1828,7 +1911,7 @@ color :rgb(0, 0, 0)</string>
       <string>1</string>
      </property>
     </widget>
-    <widget class="QLabel" name="label_4">
+    <widget class="QLabel" name="label_28">
      <property name="geometry">
       <rect>
        <x>30</x>
@@ -1844,7 +1927,7 @@ color :rgb(0, 0, 0)</string>
       <string>2</string>
      </property>
     </widget>
-    <widget class="QLabel" name="label_5">
+    <widget class="QLabel" name="label_29">
      <property name="geometry">
       <rect>
        <x>30</x>
@@ -1860,7 +1943,7 @@ color :rgb(0, 0, 0)</string>
       <string>3</string>
      </property>
     </widget>
-    <widget class="QLabel" name="label_7">
+    <widget class="QLabel" name="label_30">
      <property name="geometry">
       <rect>
        <x>30</x>
@@ -1876,7 +1959,7 @@ color :rgb(0, 0, 0)</string>
       <string>4</string>
      </property>
     </widget>
-    <widget class="QLabel" name="label_8">
+    <widget class="QLabel" name="label_31">
      <property name="geometry">
       <rect>
        <x>30</x>
@@ -1892,7 +1975,7 @@ color :rgb(0, 0, 0)</string>
       <string>5</string>
      </property>
     </widget>
-    <widget class="QLabel" name="label_9">
+    <widget class="QLabel" name="label_32">
      <property name="geometry">
       <rect>
        <x>30</x>
@@ -1908,7 +1991,7 @@ color :rgb(0, 0, 0)</string>
       <string>7</string>
      </property>
     </widget>
-    <widget class="QLabel" name="label_10">
+    <widget class="QLabel" name="label_33">
      <property name="geometry">
       <rect>
        <x>30</x>
@@ -1924,7 +2007,7 @@ color :rgb(0, 0, 0)</string>
       <string>6</string>
      </property>
     </widget>
-    <widget class="QLabel" name="label_11">
+    <widget class="QLabel" name="label_34">
      <property name="geometry">
       <rect>
        <x>30</x>
@@ -1940,7 +2023,7 @@ color :rgb(0, 0, 0)</string>
       <string>8</string>
      </property>
     </widget>
-    <widget class="QLabel" name="label_12">
+    <widget class="QLabel" name="label_35">
      <property name="geometry">
       <rect>
        <x>30</x>
@@ -1956,7 +2039,7 @@ color :rgb(0, 0, 0)</string>
       <string>10</string>
      </property>
     </widget>
-    <widget class="QLabel" name="label_13">
+    <widget class="QLabel" name="label_36">
      <property name="geometry">
       <rect>
        <x>30</x>
@@ -1972,7 +2055,7 @@ color :rgb(0, 0, 0)</string>
       <string>9</string>
      </property>
     </widget>
-    <widget class="QLabel" name="label_14">
+    <widget class="QLabel" name="label_37">
      <property name="geometry">
       <rect>
        <x>440</x>
@@ -1988,7 +2071,7 @@ color :rgb(0, 0, 0)</string>
       <string>11</string>
      </property>
     </widget>
-    <widget class="QLabel" name="label_15">
+    <widget class="QLabel" name="label_38">
      <property name="geometry">
       <rect>
        <x>440</x>
@@ -2004,7 +2087,7 @@ color :rgb(0, 0, 0)</string>
       <string>12</string>
      </property>
     </widget>
-    <widget class="QLabel" name="label_16">
+    <widget class="QLabel" name="label_39">
      <property name="geometry">
       <rect>
        <x>440</x>
@@ -2020,7 +2103,7 @@ color :rgb(0, 0, 0)</string>
       <string>13</string>
      </property>
     </widget>
-    <widget class="QLabel" name="label_17">
+    <widget class="QLabel" name="label_40">
      <property name="geometry">
       <rect>
        <x>440</x>
@@ -2036,7 +2119,7 @@ color :rgb(0, 0, 0)</string>
       <string>14</string>
      </property>
     </widget>
-    <widget class="QLabel" name="label_18">
+    <widget class="QLabel" name="label_41">
      <property name="geometry">
       <rect>
        <x>440</x>
@@ -2052,7 +2135,7 @@ color :rgb(0, 0, 0)</string>
       <string>15</string>
      </property>
     </widget>
-    <widget class="QLabel" name="label_19">
+    <widget class="QLabel" name="label_42">
      <property name="geometry">
       <rect>
        <x>440</x>
@@ -2068,7 +2151,7 @@ color :rgb(0, 0, 0)</string>
       <string>16</string>
      </property>
     </widget>
-    <widget class="QLabel" name="label_20">
+    <widget class="QLabel" name="label_43">
      <property name="geometry">
       <rect>
        <x>440</x>
@@ -2084,7 +2167,7 @@ color :rgb(0, 0, 0)</string>
       <string>17</string>
      </property>
     </widget>
-    <widget class="QLabel" name="label_21">
+    <widget class="QLabel" name="label_44">
      <property name="geometry">
       <rect>
        <x>440</x>
@@ -2100,7 +2183,7 @@ color :rgb(0, 0, 0)</string>
       <string>18</string>
      </property>
     </widget>
-    <widget class="QLabel" name="label_22">
+    <widget class="QLabel" name="label_45">
      <property name="geometry">
       <rect>
        <x>440</x>
@@ -2116,7 +2199,7 @@ color :rgb(0, 0, 0)</string>
       <string>19</string>
      </property>
     </widget>
-    <widget class="QLabel" name="label_23">
+    <widget class="QLabel" name="label_46">
      <property name="geometry">
       <rect>
        <x>440</x>
@@ -2133,16 +2216,6 @@ color :rgb(0, 0, 0)</string>
      </property>
     </widget>
    </widget>
-  </widget>
-  <widget class="QMenuBar" name="menubar">
-   <property name="geometry">
-    <rect>
-     <x>0</x>
-     <y>0</y>
-     <width>913</width>
-     <height>26</height>
-    </rect>
-   </property>
   </widget>
   <widget class="QStatusBar" name="statusbar"/>
   <widget class="QToolBar" name="toolBar">
