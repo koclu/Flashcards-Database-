@@ -13,20 +13,113 @@ from PyQt5 import QtCore, QtGui, QtWidgets
 from PyQt5 import QtCore, QtWidgets, uic
 from user import Users
 import menu
+import psycopg2
 import threading
 
 class Addlevel_Window(QtWidgets.QMainWindow):
-     def __init__(self, user):
-        self.user = user
-        super(Addlevel_Window, self).__init__()
-        uic.loadUi('Ui/addnewlevel.ui', self)
+   def __init__(self, user):
+      self.user = user
+      super(Addlevel_Window, self).__init__()
+      uic.loadUi('Ui/addnewlevel.ui', self)
+      self.quitbutton.clicked.connect(self.backk)
+      
+      self.save_button.clicked.connect(self.save_to_sql)
+      levelname = self.levelname.text()
+      d1=self.lineEdit_1d.text()
+      e1=self.lineEdit_1e.text()
+      d2=self.lineEdit_2d.text()
+      e2=self.lineEdit_2e.text()
+      d3=self.lineEdit_3d.text()
+      e3=self.lineEdit_3e.text()
+      d4=self.lineEdit_4d.text()
+      e4=self.lineEdit_4e.text()
+      d5=self.lineEdit_5d.text()
+      e5=self.lineEdit_5e.text()
+      d6=self.lineEdit_6d.text()
+      e6=self.lineEdit_6e.text()
+      d7=self.lineEdit_7d.text()
+      e7=self.lineEdit_7e.text()
+      d8=self.lineEdit_8d.text()
+      e8=self.lineEdit_8e.text()
+      d9=self.lineEdit_9d.text()
+      e9=self.lineEdit_9e.text()
+      d10=self.lineEdit_10d.text()
+      e10=self.lineEdit_10e.text()
+      d11=self.lineEdit_11d.text()
+      e11=self.lineEdit_11e.text()
+      d12=self.lineEdit_12d.text()
+      e12=self.lineEdit_12e.text()
+      d13=self.lineEdit_13d.text()
+      e13=self.lineEdit_13e.text()
+      d14=self.lineEdit_14d.text()
+      e14=self.lineEdit_14e.text()
+      d15=self.lineEdit_15d.text()
+      e15=self.lineEdit_15e.text()
+      d16=self.lineEdit_16d.text()
+      e16=self.lineEdit_16e.text()
+      d17=self.lineEdit_17d.text()
+      e17=self.lineEdit_17e.text()
+      d18=self.lineEdit_18d.text()
+      e18=self.lineEdit_18e.text()
+      d19=self.lineEdit_19d.text()
+      e19=self.lineEdit_19e.text()
+      d20=self.lineEdit_20d.text()
+      e20=self.lineEdit_20e.text()
+      self.show()
+   def backk(self):
+      self.cams = menu.Menuscreen_window(self.user)
+      self.cams.show()
+      self.close()
+   def save_to_sql(self):
+      conn = psycopg2.connect(
+         host="localhost",
+         database="flashcards",
+         user='postgres',
+         password='mumumu.123')
+      try:
+         cur = conn.cursor()
+         wordlist= [
+            [d1, e1],
+            [d2, e2],
+            [d3, e3],
+            [d4, e4],
+            [d5, e5],
+            [d6, e6],
+            [d7, e7],
+            [d8, e8],
+            [d9, e9],
+            [d10, e10],
+            [d11, e11],
+            [d12, e12],
+            [d13, e13],
+            [d14, e14],
+            [d15, e15],
+            [d16, e16],
+            [d17, e17],
+            [d18, e18],
+            [d19, e19],
+            [d20, e20],
+         ]
+         for word in wordlist:
+            cur.execute(
+                f""" insert into public."Words"(Dutch,English,words_of_level) 
+                VALUES ("{word[0]}","{word[1]}",{levelname})""")
+         cur.close()
+         conn.commit()
+      except (Exception) as error:
+         print(error)
+      finally:
+         # close the connection at the end
+         if conn is not None:
+            conn.close()
+            print('Database connection closed.')
 
-        self.quitbutton.clicked.connect(self.backk)
-        
 
-        self.show()
-     def backk(self):
-        
-        self.cams = menu.Menuscreen_window(self.user)
-        self.cams.show()
-        self.close()
+      # making it editable
+		self.combo_box.setEditable(True)
+      self.combobox.addItem(levelname)
+
+
+
+
+      

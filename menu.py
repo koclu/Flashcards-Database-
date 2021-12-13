@@ -1,11 +1,9 @@
 from PyQt5 import QtWidgets, uic
 from user import Users
 from word_screen import Wordscreen_window
+from addlevel import Addlevel_Window
 import os
 from statistics import Statistics_Window
-from addlevel import Addlevel_Window
-
-
 
 class Menuscreen_window(QtWidgets.QMainWindow):
 
@@ -24,7 +22,6 @@ class Menuscreen_window(QtWidgets.QMainWindow):
         self.quitbutton.clicked.connect(self.quit)
         self.resetbutton.clicked.connect(self.push_resetbutton)
         self.playbutton_2.clicked.connect(self.showstatistics)
-
         self.addlevelbutton.clicked.connect(self.showaddlevel)
         self.show()
 
@@ -36,21 +33,28 @@ class Menuscreen_window(QtWidgets.QMainWindow):
             "value", self.user.totalprogress())
 
     def play(self):
-        self.close()
         self.cams = Wordscreen_window(self.user)
-
-        # self.cams.show()
-
+        self.cams.show()
+        self.close()
+        
     def showstatistics(self):
         self.cams = Statistics_Window(self.user)
-        # self.cams.show()
+        self.cams.show()
         self.close()
+
 
     def quit(self):
         Users.save_to_json(self.user)
         os._exit(1)
-
     def showaddlevel(self):
         self.cams = Addlevel_Window(self.user)
         self.cams.show()
         self.close()
+
+    def combobox(self):
+        selection=self.comboBox.currentText()
+        self.user.level=selection
+
+        
+        
+    
