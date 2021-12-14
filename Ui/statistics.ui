@@ -41,8 +41,8 @@
    <widget class="QWidget" name="mainmenu_widget" native="true">
     <property name="geometry">
      <rect>
-      <x>-10</x>
-      <y>10</y>
+      <x>-20</x>
+      <y>0</y>
       <width>881</width>
       <height>721</height>
      </rect>

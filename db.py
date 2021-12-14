@@ -61,8 +61,16 @@ def checkname(name):
         return False
 
 
-def getleveltable():
-    query = """select * from public."Words where " """
+def getleveltable(user_object):
+    query = f"""select w.words_id, w.dutch,w.english 
+    from public."Words" as w 
+    join public."Users" as u 
+    on u.current_level = w.words_of_level 
+    where u.user_name = '{user_object.name}'
+    """
+    info = cur.execute(query)
+    info = cur.fetchall()
+    return info
 
 
 def savename(user_object):
