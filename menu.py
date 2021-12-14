@@ -45,7 +45,6 @@ class Menuscreen_window(QtWidgets.QMainWindow):
         self.close()
 
     def quit(self):
-        # Users.save_to_json(self.user)
         db.save_user(self.user)
         os._exit(1)
 

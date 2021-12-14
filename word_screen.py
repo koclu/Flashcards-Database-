@@ -39,26 +39,10 @@ class Wordscreen_window(QtWidgets.QMainWindow):
         self.sleeptime(1)
         self.timer.setText("---")
 
-    # def totaltime(self):
-    #     m = self.user.totaltime//60
-    #     s = self.user.totaltime % 60
-
-    #     while s <= 60:
-    #         self.total_time_label.setText(
-    #             "Minute : %d Second : %d " % (m, s))
-    #         self.sleeptime(1)
-    #         s += 1
-    #         self.user.totaltime += 1
-    #         if s == 60:
-    #             m += 1
-    #             self.user.totaltime += 60*m
-    #             s = 0
-
     def showTime(self):
         self.count += 1
         m = self.count//60
         s = self.count % 60
-        #self.total_time_label.setText("Total Time: " + str(self.count))
         if s <= 60:
             self.total_time_label.setText(
                 "Minute : %d Second : %d " % (m, s))
