@@ -61,8 +61,16 @@ def checkname(name):
         return False
 
 
-def getleveltable():
-    query = """select * from public."Words where " """
+def getleveltable(user_object):
+    query = f"""select w.words_id, w.dutch,w.english 
+    from public."Words" as w 
+    join public."Users" as u 
+    on u.current_level = w.words_of_level 
+    where u.user_name = '{user_object.name}'
+    """
+    info = cur.execute(query)
+    info = cur.fetchall()
+    return info
 
 
 def savename(user_object):
@@ -104,3 +112,14 @@ def calculate_totalprogress(user_object):
     info2 = cur.fetchall()
     total_of_words = info2[0][0]
     return ((level * 100) / (total_of_words/20))
+
+
+def add_level(user_object, list, levelname):
+
+    for word in list:
+        if word:
+            continue
+        cur.execute(
+            f""" insert into public."Custom_levels"(user_name,level_name,dutch,english) 
+        VALUES ('{user_object.name}','{levelname}','{word[0]}','{word[1]}')""")
+        conn.commit()
