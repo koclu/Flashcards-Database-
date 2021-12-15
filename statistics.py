@@ -23,19 +23,17 @@ class Statistics_Window(QtWidgets.QMainWindow):
         self.user = user
         super(Statistics_Window, self).__init__()
         uic.loadUi('Ui/statistics.ui', self)
-        
+
         self.quitbutton.clicked.connect(self.backk)
         self.show()
 
-        query3="""SELECT count(user_name)
+        query3 = """SELECT count(user_name)
 FROM public."Users";"""
         info3 = db.cur.execute(query3)
         info3 = db.cur.fetchall()
-        
-        self.mainmenu_label.setText(("Numbers Of Players :   {} ".format(info3[0][0])))
-        
-        query=f"""select u.user_name,MAX(s.completed_level),ROW_NUMBER() OVER(order by MAX(s.completed_level) desc) as row_number from public."Users"  as u
 
+        self.mainmenu_label.setText(
+            ("Numbers Of Players :   {} ".format(info3[0][0])))
 
         query = f"""select u.user_name,MAX(s.completed_level),ROW_NUMBER() OVER(order by MAX(s.completed_level) desc) as row_number from public."Users"  as u
 
@@ -88,12 +86,8 @@ group by u.user_name"""
                     self.pushButton.setText(
                         ("You are in the  {} .  position.You  reached max. level  {}. *** BRAVO! ***").format(i[2], i[1]))
 
-
-
     def backk(self):
 
         self.cams = menu.Menuscreen_window(self.user)
         self.cams.show()
         self.close()
-
-    

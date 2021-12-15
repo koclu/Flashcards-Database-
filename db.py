@@ -27,9 +27,9 @@ conn.commit()
 
 conn = psycopg2.connect(
     host="localhost",
-    database="Flashcards",
+    database="Flashcard",
     user='postgres',
-    password="Alvo1.")
+    password=1)
 try:
 
     cur = conn.cursor()
@@ -62,10 +62,10 @@ def checkname(name):
 
 
 def getleveltable(user_object):
-    query = f"""select w.words_id, w.dutch,w.english 
-    from public."Words" as w 
-    join public."Users" as u 
-    on u.current_level = w.words_of_level 
+    query = f"""select w.words_id, w.dutch,w.english
+    from public."Words" as w
+    join public."Users" as u
+    on u.current_level = w.words_of_level
     where u.user_name = '{user_object.name}'
     """
     info = cur.execute(query)
@@ -120,6 +120,16 @@ def add_level(user_object, list, levelname):
         if word:
             continue
         cur.execute(
-            f""" insert into public."Custom_levels"(user_name,level_name,dutch,english) 
+            f""" insert into public."Custom_levels"(user_name,level_name,dutch,english)
         VALUES ('{user_object.name}','{levelname}','{word[0]}','{word[1]}')""")
         conn.commit()
+
+
+def updatestatistics(user_object):
+    query = f""" insert into public."Statistics"(user_name,completed_level,attemps,knows)
+        VALUES ('{user_object.name}',{user_object.level},{user_object.Attempts},{user_object.atOnce}) on conflict (user_name,completed_level)
+        do update set attemps = {user_object.Attempts},knows = {user_object.atOnce}"""
+    cur.execute(query)
+    conn.commit()
+    user_object.Attempts = 0
+    user_object.atOnce = 0
