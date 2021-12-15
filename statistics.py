@@ -23,22 +23,34 @@ class Statistics_Window(QtWidgets.QMainWindow):
         self.user = user
         super(Statistics_Window, self).__init__()
         uic.loadUi('Ui/statistics.ui', self)
-
+        
         self.quitbutton.clicked.connect(self.backk)
         self.show()
 
+        query3="""SELECT count(user_name)
+FROM public."Users";"""
+        info3 = db.cur.execute(query3)
+        info3 = db.cur.fetchall()
+        
+        self.mainmenu_label.setText(("Numbers Of Players :   {} ".format(info3[0][0])))
+        
+        query=f"""select u.user_name,MAX(s.completed_level),ROW_NUMBER() OVER(order by MAX(s.completed_level) desc) as row_number from public."Users"  as u
+
+
         query = f"""select u.user_name,MAX(s.completed_level),ROW_NUMBER() OVER(order by MAX(s.completed_level) desc) as row_number from public."Users"  as u
+
 join public."Statistics" as s on s.user_name = u.user_name
 group by u.user_name"""
         info = db.cur.execute(query)
         info = db.cur.fetchall()
-        print(info)
+
         #  info da kullanicilar (isim,maxlevel)
 
         for i in range(5):
 
             query2 = """select user_name , AVG(100*(knows/attemps::float))  as "ka" from public."Statistics"  
         where user_name ='%s'
+
         group by user_name""" % (info[i][0])
             info2 = db.cur.execute(query2)
             info2 = db.cur.fetchall()
@@ -77,14 +89,6 @@ group by u.user_name"""
                         ("You are in the  {} .  position.You  reached max. level  {}. *** BRAVO! ***").format(i[2], i[1]))
 
 
-# toplam kullanici
-        query3 = """SELECT count(user_name)
-FROM public."Users";"""
-        info3 = db.cur.execute(query3)
-        info3 = db.cur.fetchall()
-        print(info3[0][0])
-        self.mainmenu_label.setText(
-            ("Numbers Of Players :   {} ".format(info3[0][0])))
 
     def backk(self):
 
@@ -92,9 +96,4 @@ FROM public."Users";"""
         self.cams.show()
         self.close()
 
-    def total_procent():
-        conn = psycopg2.connect(
-            host="localhost",
-            database="Flashcards",
-            user='postgres',
-            password="Alvo1.")
+    
