@@ -9,6 +9,8 @@ class Wordscreen_window(QtWidgets.QMainWindow):
     def __init__(self, user):
         self.user = user
         self.count = user.totaltime
+        self.user.atOnce = 0
+        self.user.Attempts = 0
         super(Wordscreen_window, self).__init__()
         uic.loadUi('Ui/wordscreen.ui', self)
 
@@ -58,6 +60,10 @@ class Wordscreen_window(QtWidgets.QMainWindow):
         self.next_word()
 
     def push_green_button(self):
+        self.user.atOnce += 1
+        self.user.Attempts += 1
+        self.lineEditTitles.setText(
+            "       Current Level Success Rate : " + str(self.user.atOnce)+"/"+str(self.user.Attempts))
         self.id = self.id + 1
         self.next_word()
 
@@ -65,6 +71,9 @@ class Wordscreen_window(QtWidgets.QMainWindow):
         self.user.word_of_levels.append(
             (self.word_id, self.dutch, self.english))
         self.id = self.id + 1
+        self.user.Attempts += 1
+        self.lineEditTitles.setText(
+            "       Current Level Success Rate : " + str(self.user.atOnce)+"/"+str(self.user.Attempts))
         self.next_word()
 
     def next_word(self):
