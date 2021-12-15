@@ -7,3 +7,5 @@ class Users:
         self.name = name
         self.level = level
         self.totaltime = totaltime
+        self.atOnce = 0
+        self.Attempts = 0
