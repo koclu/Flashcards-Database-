@@ -4,9 +4,9 @@ import psycopg2
 
 conn = psycopg2.connect(
     host="localhost",
-    database="Flashcard",
+    database="Flashcards",
     user='postgres',
-    password=1)
+    password="Alvo1.")
 try:
 
     cur = conn.cursor()
