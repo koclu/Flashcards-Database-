@@ -17,21 +17,16 @@ import menu
 import psycopg2
 import db
 
+
 class Statistics_Window(QtWidgets.QMainWindow):
-     def __init__(self, user):
+    def __init__(self, user):
         self.user = user
         super(Statistics_Window, self).__init__()
         uic.loadUi('Ui/statistics.ui', self)
         
         self.quitbutton.clicked.connect(self.backk)
         self.show()
-        conn = psycopg2.connect(
-        host="localhost",
-        database="Flashcards",
-        user='postgres',
-        password="Alvo1.")
-        
-        db.cur = conn.cursor()
+
         query3="""SELECT count(user_name)
 FROM public."Users";"""
         info3 = db.cur.execute(query3)
@@ -40,35 +35,39 @@ FROM public."Users";"""
         self.mainmenu_label.setText(("Numbers Of Players :   {} ".format(info3[0][0])))
         
         query=f"""select u.user_name,MAX(s.completed_level),ROW_NUMBER() OVER(order by MAX(s.completed_level) desc) as row_number from public."Users"  as u
+
+
+        query = f"""select u.user_name,MAX(s.completed_level),ROW_NUMBER() OVER(order by MAX(s.completed_level) desc) as row_number from public."Users"  as u
+
 join public."Statistics" as s on s.user_name = u.user_name
 group by u.user_name"""
         info = db.cur.execute(query)
         info = db.cur.fetchall()
-        
+
         #  info da kullanicilar (isim,maxlevel)
-        
+
         for i in range(5):
 
-                query2="""select user_name , AVG(100*(knows/attemps::float))  as "ka" from public."Statistics"  
+            query2 = """select user_name , AVG(100*(knows/attemps::float))  as "ka" from public."Statistics"  
         where user_name ='%s'
-        group by user_name"""%(info[i][0])
-                info2 = db.cur.execute(query2)
-                info2 = db.cur.fetchall()
-                #info2 nin icine avaragelar (isim,oran) seklinde gelecek
-                if i==0:
-                   self.progressBar_menu_1.setProperty("value", (info2[0][1]))
-                if i==1:
-                   self.progressBar_menu_2.setProperty("value", (info2[0][1]))
-                if i==2:
-                   self.progressBar_menu_3.setProperty("value", (info2[0][1]))
-                if i==3:
-                   self.progressBar_menu_4.setProperty("value", (info2[0][1]))
-                if i==4:
-                   self.progressBar_menu_5.setProperty("value", (info2[0][1]))
-                i+=1    
-        
 
-       
+        group by user_name""" % (info[i][0])
+            info2 = db.cur.execute(query2)
+            info2 = db.cur.fetchall()
+            # info2 nin icine avaragelar (isim,oran) seklinde gelecek
+            if i == 0:
+                self.progressBar_menu_1.setProperty("value", (info2[0][1]))
+            if i == 1:
+                self.progressBar_menu_2.setProperty("value", (info2[0][1]))
+            if i == 2:
+                self.progressBar_menu_3.setProperty("value", (info2[0][1]))
+            if i == 3:
+                self.progressBar_menu_4.setProperty("value", (info2[0][1]))
+            if i == 4:
+                self.progressBar_menu_5.setProperty("value", (info2[0][1]))
+            print(info2[0][1])
+            i += 1
+
         self.linemax_1.setText(("    {}").format(info[0][1]))
         self.linemax_2.setText(("    {}").format(info[1][1]))
         self.linemax_3.setText(("    {}").format(info[2][1]))
@@ -80,35 +79,21 @@ group by u.user_name"""
         self.lineEdit_3.setText(("   3 rd          {}").format(info[2][0]))
         self.lineEdit_4.setText(("   4 th          {}").format(info[3][0]))
         self.lineEdit_5.setText(("   5 th          {}").format(info[4][0]))
-#anlik kullanici (vat yerine obje gelecek)
+# anlik kullanici (vat yerine obje gelecek)
         for i in info:
-            if i[0]==self.user.name:
-                    self.pushButton.setText(("You are in the  {} .  position.You  reached max. level  {}.").format(i[2],i[1]))
-                    if i[2]<4:
-                        self.pushButton.setText(("You are in the  {} .  position.You  reached max. level  {}. *** BRAVO! ***").format(i[2],i[1]))
+            if i[0] == self.user.name:
+                self.pushButton.setText(
+                    ("You are in the  {} .  position.You  reached max. level  {}.").format(i[2], i[1]))
+                if i[2] < 4:
+                    self.pushButton.setText(
+                        ("You are in the  {} .  position.You  reached max. level  {}. *** BRAVO! ***").format(i[2], i[1]))
 
 
-#toplam kullanici
-        
 
-   
-       
-         
+    def backk(self):
 
-     def backk(self):
-        
         self.cams = menu.Menuscreen_window(self.user)
         self.cams.show()
         self.close()
-     def total_procent(): 
-       conn = psycopg2.connect(
-       host="localhost",
-       database="Flashcards",
-       user='postgres',
-       password="Alvo1.")
 
-
-
-
-
-
+    
