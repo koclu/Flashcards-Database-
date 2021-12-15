@@ -40,9 +40,10 @@ class Menuscreen_window(QtWidgets.QMainWindow):
         self.cams = Wordscreen_window(self.user)
 
     def showstatistics(self):
-        self.cams = Statistics_Window(self.user)
-        self.cams.show()
         self.close()
+        self.cams = Statistics_Window(self.user)
+        # self.cams.show()
+        
 
     def quit(self):
         db.save_user(self.user)
