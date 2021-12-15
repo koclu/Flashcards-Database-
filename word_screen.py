@@ -9,8 +9,8 @@ class Wordscreen_window(QtWidgets.QMainWindow):
     def __init__(self, user):
         self.user = user
         self.count = user.totaltime
-        self.user.atOnce=0
-        self.user.Attempts=0
+        self.user.atOnce = 0
+        self.user.Attempts = 0
         super(Wordscreen_window, self).__init__()
         uic.loadUi('Ui/wordscreen.ui', self)
 
@@ -55,58 +55,53 @@ class Wordscreen_window(QtWidgets.QMainWindow):
 
     def playgame(self):
         self.user.word_of_levels = db.getleveltable(self.user)
-        while len(self.user.word_of_levels) >= 0:
-            if len(self.user.word_of_levels) == 0:
-                self.user.level += 1
-                db.updatelevel(self.user)
-                self.user.word_of_levels = db.getleveltable(self.user)
-                continue
-            else:
-                self.level_label.setText("Level : " + str(self.user.level))
-                self.remaining_word_label.setText(
-                    "Remaining Words : " + str(len(self.user.word_of_levels)))
-                self.green_button.setEnabled(False)
-                self.red_button.setEnabled(False)
-                for word_id, dutch, english in self.user.word_of_levels:
-                    self.word_id = word_id
-                    self.dutch = dutch
-                    self.english = english
-                    self.wordcard_label.setText(dutch)
-                    self.wordcard_label.setStyleSheet("border-radius:20px;font: 25pt \"Berlin Sans FB\";\n"
-                                                      "color:rgb(255, 255, 255) ;\n"
-                                                      "background-color: rgb(85, 85, 255);")
-                    self.counter_on3()
-                    self.wordcard_label.setText(english)
-                    self.wordcard_label.setStyleSheet("border-radius:20px;font: 25pt \"Berlin Sans FB\";\n"
-                                                      "color:rgb(255, 255, 255) ;\n"
-                                                      "background-color: rgb(38, 180, 182);")
-                    self.green_button.setEnabled(True)
-                    self.red_button.setEnabled(True)
-                    while True:
-                        self.sleeptime(0.1)
-                        if self.green_button.isChecked():
-                            self.green_button.setChecked(False)
-                            break
-                        elif self.red_button.isChecked():
-                            self.red_button.setChecked(False)
-                            break
+        self.level_label.setText("Level : " + str(self.user.level))
+        self.id = 0
+        self.next_word()
 
     def push_green_button(self):
-        self.user.atOnce+=1
-        self.user.Attempts+=1
-        self.user.word_of_levels.remove(
-            (self.word_id, self.dutch, self.english))
-        self.remaining_word_label.setText(
-            "Remaining Words : " + str(len(self.user.word_of_levels)))
-        self.lineEditTitles.setText("       Current Level Success Rate : " + str(self.user.atOnce)+"/"+str(self.user.Attempts))
-        
-        
+        self.user.atOnce += 1
+        self.user.Attempts += 1
+        self.lineEditTitles.setText(
+            "       Current Level Success Rate : " + str(self.user.atOnce)+"/"+str(self.user.Attempts))
+        self.id = self.id + 1
+        self.next_word()
 
     def push_red_button(self):
-        self.user.Attempts+=1
-        self.lineEditTitles.setText("       Current Level Success Rate : " + str(self.user.atOnce)+"/"+str(self.user.Attempts))
-      
-        
+        self.user.word_of_levels.append(
+            (self.word_id, self.dutch, self.english))
+        self.id = self.id + 1
+        self.user.Attempts += 1
+        self.lineEditTitles.setText(
+            "       Current Level Success Rate : " + str(self.user.atOnce)+"/"+str(self.user.Attempts))
+        self.next_word()
+
+    def next_word(self):
+        if self.id == len(self.user.word_of_levels):
+            self.user.level += 1
+            db.updatelevel(self.user)
+            self.user.word_of_levels = db.getleveltable(self.user)
+            self.playgame()
+        else:
+            self.green_button.setEnabled(False)
+            self.red_button.setEnabled(False)
+            word_id, dutch, english = self.user.word_of_levels[self.id]
+            self.word_id = word_id
+            self.dutch = dutch
+            self.english = english
+            self.remaining_word_label.setText(
+                "Remaining Words : " + str(len(self.user.word_of_levels) - self.id))
+            self.wordcard_label.setText(dutch)
+            self.wordcard_label.setStyleSheet("border-radius:20px;font: 25pt \"Berlin Sans FB\";\n"
+                                              "color:rgb(255, 255, 255) ;\n"
+                                              "background-color: rgb(85, 85, 255);")
+            self.counter_on3()
+            self.green_button.setEnabled(True)
+            self.red_button.setEnabled(True)
+            self.wordcard_label.setText(english)
+            self.wordcard_label.setStyleSheet("border-radius:20px;font: 25pt \"Berlin Sans FB\";\n"
+                                              "color:rgb(255, 255, 255) ;\n"
+                                              "background-color: rgb(38, 180, 182);")
 
     def back(self):
         self.q_timer.stop()
