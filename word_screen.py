@@ -9,8 +9,7 @@ class Wordscreen_window(QtWidgets.QMainWindow):
     def __init__(self, user):
         self.user = user
         self.count = user.totaltime
-        self.user.atOnce = 0
-        self.user.Attempts = 0
+        self.remainingtime = 3
         super(Wordscreen_window, self).__init__()
         uic.loadUi('Ui/wordscreen.ui', self)
 
@@ -19,29 +18,28 @@ class Wordscreen_window(QtWidgets.QMainWindow):
         self.red_button.clicked.connect(self.push_red_button)
         self.green_button.setCheckable(True)
         self.red_button.setCheckable(True)
+        self.progressBar_menu_6.setProperty(
+            "value", self.calculateprogressbar_menu_6())
 
         self.show()
         self.q_timer = QtCore.QTimer()
         self.q_timer.timeout.connect(self.showTime)
-        self.q_timer.start(1000)
+        self.q_timer.start(1)
 
         self.playgame()
 
-    def sleeptime(self, n):
-        loop = QtCore.QEventLoop()
-        QtCore.QTimer.singleShot(n*1000, loop.quit)
-        loop.exec_()
-
-    def counter_on3(self):
-        self.timer.setText(str(3))
-        self.sleeptime(1)
-        self.timer.setText(str(2))
-        self.sleeptime(1)
-        self.timer.setText(str(1))
-        self.sleeptime(1)
-        self.timer.setText("---")
-
     def showTime(self):
+        if self.remainingtime != 1:
+            self.remainingtime -= 1
+            self.timer.setText(str(self.remainingtime))
+        else:
+            self.timer.setText("---")
+            self.green_button.setEnabled(True)
+            self.red_button.setEnabled(True)
+            self.wordcard_label.setText(self.english)
+            self.wordcard_label.setStyleSheet("border-radius:20px;font: 25pt \"Berlin Sans FB\";\n"
+                                              "color:rgb(255, 255, 255) ;\n"
+                                              "background-color: rgb(38, 180, 182);")
         self.count += 1
         m = self.count//60
         s = self.count % 60
@@ -62,27 +60,44 @@ class Wordscreen_window(QtWidgets.QMainWindow):
     def push_green_button(self):
         self.user.atOnce += 1
         self.user.Attempts += 1
+        self.remainingtime = 4
         self.lineEditTitles.setText(
             "       Current Level Success Rate : " + str(self.user.atOnce)+"/"+str(self.user.Attempts))
+        self.progressBar_menu_6.setProperty(
+            "value", self.calculateprogressbar_menu_6())
         self.id = self.id + 1
         self.next_word()
+
+    def calculateprogressbar_menu_6(self):
+        if self.user.atOnce == 0 or self.user.Attempts == 0:
+            return 0
+        else:
+            return (self.user.atOnce/self.user.Attempts)*100
 
     def push_red_button(self):
         self.user.word_of_levels.append(
             (self.word_id, self.dutch, self.english))
         self.id = self.id + 1
         self.user.Attempts += 1
+        self.remainingtime = 4
         self.lineEditTitles.setText(
             "       Current Level Success Rate : " + str(self.user.atOnce)+"/"+str(self.user.Attempts))
+        self.progressBar_menu_6.setProperty(
+            "value", self.calculateprogressbar_menu_6())
         self.next_word()
 
     def next_word(self):
         if self.id == len(self.user.word_of_levels):
+            db.updatestatistics(self.user)
+            self.lineEditTitles.setText(
+                "       Current Level Success Rate : " + str(self.user.atOnce)+"/"+str(self.user.Attempts))
             self.user.level += 1
+
             db.updatelevel(self.user)
             self.user.word_of_levels = db.getleveltable(self.user)
             self.playgame()
         else:
+
             self.green_button.setEnabled(False)
             self.red_button.setEnabled(False)
             word_id, dutch, english = self.user.word_of_levels[self.id]
@@ -95,13 +110,6 @@ class Wordscreen_window(QtWidgets.QMainWindow):
             self.wordcard_label.setStyleSheet("border-radius:20px;font: 25pt \"Berlin Sans FB\";\n"
                                               "color:rgb(255, 255, 255) ;\n"
                                               "background-color: rgb(85, 85, 255);")
-            self.counter_on3()
-            self.green_button.setEnabled(True)
-            self.red_button.setEnabled(True)
-            self.wordcard_label.setText(english)
-            self.wordcard_label.setStyleSheet("border-radius:20px;font: 25pt \"Berlin Sans FB\";\n"
-                                              "color:rgb(255, 255, 255) ;\n"
-                                              "background-color: rgb(38, 180, 182);")
 
     def back(self):
         self.q_timer.stop()
