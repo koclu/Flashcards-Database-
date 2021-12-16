@@ -44,20 +44,6 @@ class Welcomescreen_window(QtWidgets.QMainWindow):
             self.error_label.setText(_translate(
                 "MainWindow", "Congrats ! Try login now"))
 
-        # Users.readjson_user()
-
-        """  if self.user.checkname():
-            self.error_label.setStyleSheet(
-                "color: rgb(255, 255, 0);font: 10pt \"Berlin Sans FB;\"\n")
-            self.error_label.setText(_translate(
-                "MainWindow", "You have an account already.Login"))
-        else:
-            self.user.save_to_json(self.user)
-            self.error_label.setStyleSheet(
-                "color: rgb(255, 255, 0);font: 10pt \"Berlin Sans FB;\"\n")
-            self.error_label.setText(_translate(
-                "MainWindow", "Congrats ! Try login now"))"""
-
     def login(self):
         _translate = QtCore.QCoreApplication.translate
         names = db.bringallnames()
@@ -85,18 +71,6 @@ class Welcomescreen_window(QtWidgets.QMainWindow):
                     "color: rgb(195, 0, 0);font: 10pt \"Berlin Sans FB;\"\n")
                 self.error_label.setText(_translate(
                     "MainWindow", "Wrong Password . Try Again "))
-
-        """        _translate = QtCore.QCoreApplication.translate
-        self.user.readjson_user()
-        name = self.lineEdit_2.text()
-        for i, j in self.user.users_dict.items():
-            if name == i:
-                level = j["level"]
-                totaltime = j["totaltime"]
-                self.user.name = name
-                self.user.level = level
-                self.user.totaltime = totaltime
-                break"""
 
     def check_username(self):
         _translate = QtCore.QCoreApplication.translate

@@ -27,9 +27,9 @@ conn.commit()
 
 conn = psycopg2.connect(
     host="localhost",
-    database="flashcards",
+    database="Flashcard",
     user='postgres',
-    password='mumumu.123')
+    password=1)
 try:
 
     cur = conn.cursor()
@@ -69,6 +69,30 @@ def getleveltable(user_object):
     where u.user_name = '{user_object.name}'
     """
     info = cur.execute(query)
+    info = cur.fetchall()
+    return info
+
+
+def gettemporarylevel(user_object):
+    query = f"""select w.words_id, w.dutch,w.english
+    from public."Words" as w
+    join public."Users" as u
+    on {user_object.temporary_level} = w.words_of_level
+    where u.user_name = '{user_object.name}'
+    """
+    info = cur.execute(query)
+    info = cur.fetchall()
+    return info
+
+
+def getcustomlevels(user_object):
+    query = f"""select dutch,english
+    from public."Custom_levels" as c
+    join public."Users" as u
+    on u.user_name = c.user_name
+    where u.user_name = '{user_object.name}' and c.level_name = '{user_object.customlevelname}'
+    """
+    cur.execute(query)
     info = cur.fetchall()
     return info
 
@@ -115,10 +139,9 @@ def calculate_totalprogress(user_object):
 
 
 def add_level(user_object, list, levelname):
-    
 
     for word in list:
-        if len(word[0])==0 or len(word[1])==0:
+        if len(word[0]) == 0 or len(word[1]) == 0:
             continue
         cur.execute(
             f""" insert into public."Custom_levels"(user_name,level_name,dutch,english)
@@ -126,26 +149,32 @@ def add_level(user_object, list, levelname):
         conn.commit()
 
 
-def checkgolevel(self, user_object, golevel):
-    _translate = QtCore.QCoreApplication.translate
-    query = f"""select * from public."Custom_levels" where level_name = '{golevel}' """
-    query2 = f"""select current_level from public."Users" where user_name = '{user_object.name}' """
+def getcustomlevelname(user_object):
+    query = f"""select distinct c.level_name
+    from public."Custom_levels" as c
+    join public."Users" as u
+    on u.user_name = c.user_name
+    where u.user_name = '{user_object.name}'
+    """
     cur.execute(query)
     info = cur.fetchall()
-    cur.execute(query2)
-    info2 = cur.fetchall()
-    if len(info) == 0 or golevel > info2:
-        self.goerrorlabel.setStyleSheet(
-                "color: rgb(195, 0, 0);font: 10pt \"Berlin Sans FB;\"\n")
-        self.goerrorlabel.setText(_translate(
-                "MainWindow", "You can`t go this level!"))      
-    else:
-        return True
-        
+    return info
+
+
 def updatestatistics(user_object):
-    query = f""" insert into public."Statistics"(user_name,completed_level,attemps,knows)
-        VALUES ('{user_object.name}',{user_object.level},{user_object.Attempts},{user_object.atOnce}) on conflict (user_name,completed_level)
-        do update set attemps = {user_object.Attempts},knows = {user_object.atOnce}"""
+    query = f""" insert into public."Statistics"(user_name, completed_level, attemps, knows)
+        VALUES('{user_object.name}', {user_object.level}, {user_object.Attempts}, {user_object.atOnce}) on conflict(user_name, completed_level)
+        do update set attemps = {user_object.Attempts}, knows = {user_object.atOnce}"""
+    cur.execute(query)
+    conn.commit()
+    user_object.Attempts = 0
+    user_object.atOnce = 0
+
+
+def updatestatistics_temporary(user_object):
+    query = f""" insert into public."Statistics"(user_name, completed_level, attemps, knows)
+        VALUES('{user_object.name}', {user_object.temporary_level}, {user_object.Attempts}, {user_object.atOnce}) on conflict(user_name, completed_level)
+        do update set attemps = {user_object.Attempts}, knows = {user_object.atOnce}"""
     cur.execute(query)
     conn.commit()
     user_object.Attempts = 0

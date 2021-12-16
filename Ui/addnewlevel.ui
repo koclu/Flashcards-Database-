@@ -18,7 +18,7 @@
     <property name="geometry">
      <rect>
       <x>-10</x>
-      <y>-10</y>
+      <y>-20</y>
       <width>881</width>
       <height>721</height>
      </rect>
@@ -544,7 +544,7 @@ background-color: rgb(255, 255, 255);
 color :rgb(0, 0, 0)
 }
 QPushButton:pressed{
-background-color: rgb(117,213,192,255);
+background-color: rgb(117,213,192);
 color :rgb(0, 0, 0)
 }
 </string>
@@ -573,7 +573,7 @@ background-color: rgb(255, 255, 255);
 color :rgb(0, 0, 0)
 }
 QPushButton:pressed{
-background-color: rgb(117,213,192,255);
+background-color: rgb(117,213,192);
 color :rgb(0, 0, 0)
 }
 </string>
@@ -2258,6 +2258,35 @@ color :rgb(0, 0, 0)</string>
      </property>
      <property name="text">
       <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:18pt; color:#ffffff;&quot;&gt;Add Level Menu&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="quitbutton_2">
+     <property name="geometry">
+      <rect>
+       <x>630</x>
+       <y>60</y>
+       <width>161</width>
+       <height>51</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">QPushButton{
+border-radius:20px;font: 20pt &quot;Berlin Sans FB&quot;;
+background-color: rgb(255, 170, 0);;
+color :rgb(0, 0, 0)
+}
+QPushButton:hover{
+background-color: rgb(255, 255, 255);
+background-color: rgb(255, 170, 0);
+}
+QPushButton:pressed{
+background-color: rgb(117,213,192);
+color :rgb(0, 0, 0)
+}
+</string>
+     </property>
+     <property name="text">
+      <string>See Levels</string>
      </property>
     </widget>
    </widget>
