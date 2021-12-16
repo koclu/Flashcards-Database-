@@ -33,6 +33,8 @@ class Addlevel_Window(QtWidgets.QMainWindow):
         self.close()
 
     def save_to_sql(self):
+        
+        _translate = QtCore.QCoreApplication.translate
         levelname = self.levelname.text()
         d1 = self.lineEdit_1d.text()
         e1 = self.lineEdit_1e.text()
@@ -96,4 +98,17 @@ class Addlevel_Window(QtWidgets.QMainWindow):
             [d19, e19],
             [d20, e20],
         ]
+        if len(levelname) == 0:
+            self.errorlabel.setStyleSheet(
+                "color: rgb(195, 0, 0);font: 10pt \"Berlin Sans FB;\"\n")
+            self.errorlabel.setText(_translate(
+                "MainWindow", "You must enter level name!"))
+            return
         db.add_level(self.user, wordlist, levelname)
+
+        self.savedlabel.setStyleSheet(
+                "color: rgb(85, 255, 0);font: 10pt \"Berlin Sans FB;\"\n")
+        self.savedlabel.setText(_translate(
+                "MainWindow", "Saved Successfull!"))
+
+        self.save_button.setEnabled(False)
