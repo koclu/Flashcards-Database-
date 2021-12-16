@@ -1,6 +1,7 @@
 from PyQt5 import QtCore, QtWidgets, uic
 from user import Users
 import menu
+import db
 
 
 class Wordscreen_window(QtWidgets.QMainWindow):
@@ -8,6 +9,7 @@ class Wordscreen_window(QtWidgets.QMainWindow):
     def __init__(self, user):
         self.user = user
         self.count = user.totaltime
+        self.remainingtime = 3
         super(Wordscreen_window, self).__init__()
         uic.loadUi('Ui/wordscreen.ui', self)
 
@@ -16,100 +18,103 @@ class Wordscreen_window(QtWidgets.QMainWindow):
         self.red_button.clicked.connect(self.push_red_button)
         self.green_button.setCheckable(True)
         self.red_button.setCheckable(True)
+        self.progressBar_menu_6.setProperty(
+            "value", self.calculateprogressbar_menu_6())
 
         self.show()
         self.q_timer = QtCore.QTimer()
         self.q_timer.timeout.connect(self.showTime)
-        self.q_timer.start(1000)
+        self.q_timer.start(1)
 
         self.playgame()
 
-    def sleeptime(self, n):
-        loop = QtCore.QEventLoop()
-        QtCore.QTimer.singleShot(n*1000, loop.quit)
-        loop.exec_()
-
-    def counter_on3(self):
-        self.timer.setText(str(3))
-        self.sleeptime(1)
-        self.timer.setText(str(2))
-        self.sleeptime(1)
-        self.timer.setText(str(1))
-        self.sleeptime(1)
-        self.timer.setText("---")
-
-    # def totaltime(self):
-    #     m = self.user.totaltime//60
-    #     s = self.user.totaltime % 60
-
-    #     while s <= 60:
-    #         self.total_time_label.setText(
-    #             "Minute : %d Second : %d " % (m, s))
-    #         self.sleeptime(1)
-    #         s += 1
-    #         self.user.totaltime += 1
-    #         if s == 60:
-    #             m += 1
-    #             self.user.totaltime += 60*m
-    #             s = 0
-
     def showTime(self):
+        if self.remainingtime != 1:
+            self.remainingtime -= 1
+            self.timer.setText(str(self.remainingtime))
+        else:
+            self.timer.setText("---")
+            self.green_button.setEnabled(True)
+            self.red_button.setEnabled(True)
+            self.wordcard_label.setText(self.english)
+            self.wordcard_label.setStyleSheet("border-radius:20px;font: 25pt \"Berlin Sans FB\";\n"
+                                              "color:rgb(255, 255, 255) ;\n"
+                                              "background-color: rgb(38, 180, 182);")
         self.count += 1
-        self.total_time_label.setText("Total Time: " + str(self.count))
+        m = self.count//60
+        s = self.count % 60
+        if s <= 60:
+            self.total_time_label.setText(
+                "Minute : %d Second : %d " % (m, s))
+            s += 1
+            if s == 60:
+                m += 1
+                s = 0
 
     def playgame(self):
-        self.user.get_level_id()
-        self.index = 0
-        while len(self.user.levelid) >= 0:
-            if len(self.user.levelid) == 0:
-                self.user.levelcheck()
-            else:
-                self.level_label.setText("Level : " + str(self.user.level))
-                self.remaining_word_label.setText(
-                    "Remaining Words : " + str(len(self.user.levelid)))
-
-                try:
-                    self.id = self.user.levelid[self.index]
-                except IndexError:
-                    self.index = 0
-                    continue
-                self.green_button.setEnabled(False)
-                self.red_button.setEnabled(False)
-
-                self.wordcard_label.setText(
-                    self.user.wordsdata[str(self.id)]["Dutch"])
-                self.wordcard_label.setStyleSheet("border-radius:20px;font: 25pt \"Berlin Sans FB\";\n"
-                                                  "color:rgb(255, 255, 255) ;\n"
-                                                  "background-color: rgb(85, 85, 255);")
-                self.counter_on3()
-                self.wordcard_label.setText(
-                    self.user.wordsdata[str(self.id)]["ENG"])
-                self.wordcard_label.setStyleSheet("border-radius:20px;font: 25pt \"Berlin Sans FB\";\n"
-                                                  "color:rgb(255, 255, 255) ;\n"
-                                                  "background-color: rgb(38, 180, 182);")
-                self.green_button.setEnabled(True)
-                self.red_button.setEnabled(True)
-                while True:
-                    self.sleeptime(0.1)
-                    if self.green_button.isChecked():
-                        self.green_button.setChecked(False)
-                        break
-                    elif self.red_button.isChecked():
-                        self.red_button.setChecked(False)
-                        break
+        self.user.word_of_levels = db.getleveltable(self.user)
+        self.level_label.setText("Level : " + str(self.user.level))
+        self.id = 0
+        self.next_word()
 
     def push_green_button(self):
-        self.user.levelid.remove(self.id)
-        self.remaining_word_label.setText(
-            "Remaining Words : " + str(len(self.user.levelid)))
+        self.user.atOnce += 1
+        self.user.Attempts += 1
+        self.remainingtime = 4
+        self.lineEditTitles.setText(
+            "       Current Level Success Rate : " + str(self.user.atOnce)+"/"+str(self.user.Attempts))
+        self.progressBar_menu_6.setProperty(
+            "value", self.calculateprogressbar_menu_6())
+        self.id = self.id + 1
+        self.next_word()
+
+    def calculateprogressbar_menu_6(self):
+        if self.user.atOnce == 0 or self.user.Attempts == 0:
+            return 0
+        else:
+            return (self.user.atOnce/self.user.Attempts)*100
 
     def push_red_button(self):
-        self.index += 1
+        self.user.word_of_levels.append(
+            (self.word_id, self.dutch, self.english))
+        self.id = self.id + 1
+        self.user.Attempts += 1
+        self.remainingtime = 4
+        self.lineEditTitles.setText(
+            "       Current Level Success Rate : " + str(self.user.atOnce)+"/"+str(self.user.Attempts))
+        self.progressBar_menu_6.setProperty(
+            "value", self.calculateprogressbar_menu_6())
+        self.next_word()
+
+    def next_word(self):
+        if self.id == len(self.user.word_of_levels):
+            db.updatestatistics(self.user)
+            self.lineEditTitles.setText(
+                "       Current Level Success Rate : " + str(self.user.atOnce)+"/"+str(self.user.Attempts))
+            self.user.level += 1
+
+            db.updatelevel(self.user)
+            self.user.word_of_levels = db.getleveltable(self.user)
+            self.playgame()
+        else:
+
+            self.green_button.setEnabled(False)
+            self.red_button.setEnabled(False)
+            word_id, dutch, english = self.user.word_of_levels[self.id]
+            self.word_id = word_id
+            self.dutch = dutch
+            self.english = english
+            self.remaining_word_label.setText(
+                "Remaining Words : " + str(len(self.user.word_of_levels) - self.id))
+            self.wordcard_label.setText(dutch)
+            self.wordcard_label.setStyleSheet("border-radius:20px;font: 25pt \"Berlin Sans FB\";\n"
+                                              "color:rgb(255, 255, 255) ;\n"
+                                              "background-color: rgb(85, 85, 255);")
 
     def back(self):
         self.q_timer.stop()
         self.user.totaltime = self.count
-        Users.save_to_json(self.user)
+        db.save_user(self.user)
         self.cams = menu.Menuscreen_window(self.user)
         self.cams.show()
         self.close()

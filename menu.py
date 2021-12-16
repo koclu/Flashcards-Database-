@@ -36,20 +36,19 @@ class Menuscreen_window(QtWidgets.QMainWindow):
             "value", db.calculate_totalprogress(self.user))
 
     def play(self):
+        self.close()
         self.cams = Wordscreen_window(self.user)
-        self.cams.show()
-        self.close()
-        
-    def showstatistics(self):
-        self.cams = Statistics_Window(self.user)
-        self.cams.show()
-        self.close()
 
+    def showstatistics(self):
+        self.close()
+        self.cams = Statistics_Window(self.user)
+        # self.cams.show()
+        
 
     def quit(self):
-        # Users.save_to_json(self.user)
         db.save_user(self.user)
         os._exit(1)
+
     def showaddlevel(self):
         self.cams = Addlevel_Window(self.user)
         self.cams.show()

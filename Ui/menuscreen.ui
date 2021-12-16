@@ -115,7 +115,7 @@ background-color: rgb(255, 255, 255);
 color :rgb(0, 0, 127)
 }
 QPushButton:pressed{
-background-color: rgb(117,213,192,255);
+background-color: rgb(117,213,192);
 color :rgb(0, 0, 127)
 }
 </string>
@@ -165,7 +165,7 @@ background-color: rgb(255, 255, 255);
 color :rgb(0, 0, 127)
 }
 QPushButton:pressed{
-background-color: rgb(117,213,192,255);
+background-color: rgb(117,213,192);
 color :rgb(0, 0, 127)
 }</string>
      </property>
@@ -242,7 +242,7 @@ background-color: rgb(255, 255, 255);
 color :rgb(0, 0, 127)
 }
 QPushButton:pressed{
-background-color: rgb(117,213,192,255);
+background-color: rgb(117,213,192);
 color :rgb(0, 0, 127)
 }</string>
      </property>
@@ -314,7 +314,7 @@ background-color: rgb(255, 255, 255);
 color :rgb(0, 0, 127)
 }
 QPushButton:pressed{
-background-color: rgb(117,213,192,255);
+background-color: rgb(117,213,192);
 color :rgb(0, 0, 127)
 }</string>
      </property>
