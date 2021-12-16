@@ -25,6 +25,7 @@ class Statistics_Window(QtWidgets.QMainWindow):
         uic.loadUi('Ui/statistics.ui', self)
 
         self.quitbutton.clicked.connect(self.backk)
+        self.getbutton.clicked.connect(self.Get_One_Level)
         self.show()
 
         query3 = """SELECT count(user_name)
@@ -63,7 +64,7 @@ group by u.user_name"""
                 self.progressBar_menu_4.setProperty("value", (info2[0][1]))
             if i == 4:
                 self.progressBar_menu_5.setProperty("value", (info2[0][1]))
-            print(info2[0][1])
+            
             i += 1
 
         self.linemax_1.setText(("    {}").format(info[0][1]))
@@ -85,6 +86,19 @@ group by u.user_name"""
                 if i[2] < 4:
                     self.pushButton.setText(
                         ("You are in the  {} .  position.You  reached max. level  {}. *** BRAVO! ***").format(i[2], i[1]))
+
+
+    def Get_One_Level(self):
+        
+        useOne_level = self.Get_Level.text()
+        query4=f"""select *  , 100*(knows/attemps::float)  as "ka" from public."Statistics" 
+where user_name = '{self.user.name}' and completed_level = {useOne_level}"""
+        Onelevel=db.cur.execute(query4)
+        Onelevel=db.cur.fetchone()
+        self.progressBar_menu_6.setProperty("value", Onelevel[4])
+       
+        
+                
 
     def backk(self):
 
