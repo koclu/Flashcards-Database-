@@ -54,6 +54,8 @@ class Menuscreen_window(QtWidgets.QMainWindow):
         self.cams.show()
         self.close()
 
-    def combobox(self):
-        selection = self.comboBox.currentText()
-        self.user.level = selection
+    def golevel(self):
+        golevel=self.golevel.text()
+        db.checkgolevel()
+        
+    

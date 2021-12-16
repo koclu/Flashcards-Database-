@@ -1,5 +1,5 @@
 import psycopg2
-
+from PyQt5 import QtCore
 
 """
 
@@ -27,9 +27,9 @@ conn.commit()
 
 conn = psycopg2.connect(
     host="localhost",
-    database="Flashcards",
+    database="flashcards",
     user='postgres',
-    password="Alvo1.")
+    password='mumumu.123')
 try:
 
     cur = conn.cursor()
@@ -115,9 +115,10 @@ def calculate_totalprogress(user_object):
 
 
 def add_level(user_object, list, levelname):
+    
 
     for word in list:
-        if word:
+        if len(word[0])==0 or len(word[1])==0:
             continue
         cur.execute(
             f""" insert into public."Custom_levels"(user_name,level_name,dutch,english)
@@ -125,6 +126,22 @@ def add_level(user_object, list, levelname):
         conn.commit()
 
 
+def checkgolevel(self, user_object, golevel):
+    _translate = QtCore.QCoreApplication.translate
+    query = f"""select * from public."Custom_levels" where level_name = '{golevel}' """
+    query2 = f"""select current_level from public."Users" where user_name = '{user_object.name}' """
+    cur.execute(query)
+    info = cur.fetchall()
+    cur.execute(query2)
+    info2 = cur.fetchall()
+    if len(info) == 0 or golevel > info2:
+        self.goerrorlabel.setStyleSheet(
+                "color: rgb(195, 0, 0);font: 10pt \"Berlin Sans FB;\"\n")
+        self.goerrorlabel.setText(_translate(
+                "MainWindow", "You can`t go this level!"))      
+    else:
+        return True
+        
 def updatestatistics(user_object):
     query = f""" insert into public."Statistics"(user_name,completed_level,attemps,knows)
         VALUES ('{user_object.name}',{user_object.level},{user_object.Attempts},{user_object.atOnce}) on conflict (user_name,completed_level)

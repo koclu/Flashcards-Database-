@@ -17,8 +17,8 @@
    <widget class="QWidget" name="mainmenu_widget" native="true">
     <property name="geometry">
      <rect>
-      <x>-20</x>
-      <y>-20</y>
+      <x>-10</x>
+      <y>-10</y>
       <width>881</width>
       <height>721</height>
      </rect>
@@ -586,7 +586,7 @@ color :rgb(0, 0, 0)
      <property name="geometry">
       <rect>
        <x>190</x>
-       <y>100</y>
+       <y>80</y>
        <width>181</width>
        <height>31</height>
       </rect>
@@ -1873,7 +1873,7 @@ color :rgb(0, 0, 0)</string>
      <property name="geometry">
       <rect>
        <x>50</x>
-       <y>100</y>
+       <y>80</y>
        <width>141</width>
        <height>31</height>
       </rect>
@@ -2213,6 +2213,51 @@ color :rgb(0, 0, 0)</string>
      </property>
      <property name="text">
       <string>20</string>
+     </property>
+    </widget>
+    <widget class="QLabel" name="errorlabel">
+     <property name="geometry">
+      <rect>
+       <x>140</x>
+       <y>110</y>
+       <width>251</width>
+       <height>31</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string/>
+     </property>
+    </widget>
+    <widget class="QLabel" name="savedlabel">
+     <property name="geometry">
+      <rect>
+       <x>270</x>
+       <y>640</y>
+       <width>171</width>
+       <height>31</height>
+      </rect>
+     </property>
+     <property name="toolTip">
+      <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;br/&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+     </property>
+     <property name="text">
+      <string/>
+     </property>
+    </widget>
+    <widget class="QLabel" name="label">
+     <property name="geometry">
+      <rect>
+       <x>300</x>
+       <y>30</y>
+       <width>231</width>
+       <height>41</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">font: 14pt &quot;Berlin Sans FB&quot;;</string>
+     </property>
+     <property name="text">
+      <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:18pt; color:#ffffff;&quot;&gt;Add Level Menu&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
      </property>
     </widget>
    </widget>
