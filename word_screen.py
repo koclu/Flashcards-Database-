@@ -24,7 +24,7 @@ class Wordscreen_window(QtWidgets.QMainWindow):
         self.show()
         self.q_timer = QtCore.QTimer()
         self.q_timer.timeout.connect(self.showTime)
-        self.q_timer.start(1)
+        self.q_timer.start(1000)
 
         self.playgame()
 
